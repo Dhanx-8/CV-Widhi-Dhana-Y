@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Widhi Dhana Yulistyo</title>
+    <title>Portfolio | Widhi Dhana Yulistyo - Sales Operations & Financial Analysis Specialist</title>
+    <meta name="description" content="Portfolio profesional Widhi Dhana Yulistyo, spesialis Sales Operations & Financial Analysis dengan pengalaman dalam manajemen inventaris dan rekonsiliasi keuangan multi-channel.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
     <style>
         :root {
             --primary: #1D63FF;
@@ -35,7 +37,7 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Inter', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.7;
             color: var(--dark);
             background-color: #f9fafc;
@@ -51,7 +53,7 @@
         
         /* Header & Navigation */
         header {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.97);
             backdrop-filter: blur(10px);
             box-shadow: var(--shadow);
             position: fixed;
@@ -139,6 +141,33 @@
         
         nav a.active::after {
             width: 100%;
+        }
+        
+        .language-switcher {
+            display: flex;
+            gap: 8px;
+            margin-left: 20px;
+        }
+        
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .lang-btn:hover:not(.active) {
+            background: rgba(29, 99, 255, 0.1);
         }
         
         .mobile-menu-btn {
@@ -327,9 +356,22 @@
             color: var(--primary);
             margin-left: 15px;
         }
+        .btn-pdf {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-left: 0px;
+        }        
         
         .btn-outline::before {
             background: var(--gradient-primary);
+        }
+        .btn-pdf::before {
+            background: var(--gradient-primary);
+        }        
+        .btn-pdf:hover {
+            color: white;
+            border-color: transparent;
         }
         
         .btn-outline:hover {
@@ -398,14 +440,23 @@
         
         .about-text {
             flex: 1;
-            text-align:justify;
-            text-indent: 20px;
+            text-align: justify;
+            text-indent: 10px;
             background: white;
             padding: 40px;
             border-radius: 20px;
             box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .about-text p:last-child {
+            margin-bottom: 0;
         }
         
         .about-text::before {
@@ -474,7 +525,7 @@
             z-index: 1;
         }
         
-        /* Tools Section */
+        /* Skills Section */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -570,6 +621,9 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .project-card:hover {
@@ -591,6 +645,9 @@
         .project-content {
             padding: 30px;
             position: relative;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .project-content h3 {
@@ -599,41 +656,73 @@
             font-size: 1.5rem;
         }
         
+        .project-content p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
         .project-btn {
-            margin-top: 20px;
-            display: inline-block;
+            margin-top: auto;
         }
         
         /* Experience Section */
         .timeline {
             position: relative;
             max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 0;
+            margin: 0;
+            padding: 20px 0;
         }
         
         .timeline::before {
             content: '';
             position: absolute;
-            width: 4px;
+            width: 5px;
             background: var(--gradient-primary);
             top: 0;
             bottom: 0;
-            left: 50%;
+            left: 5%;
             transform: translateX(-50%);
             border-radius: 5px;
         }
         
         .timeline-item {
-            padding: 20px 50px;
+            display: flex;
+            padding: 20px 70px;
             position: relative;
-            width: 50%;
+            width: 180%;
             box-sizing: border-box;
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
+            height:min-content;
+        }
+
+        .timeline-logo-stats{
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 10px;
+            margin-left: 25px;
+        }
+
+        .timeline-logo img {
+            width: 200px; /* atur sesuai kebutuhan */
+            height: auto;
+            display: grid;
+            border-radius: 20%;
+            grid-template-columns: repeat(2, 1fr);    
+            transform: translateY(0px);
+            transition: opacity 0.6s ease, transform 0.6s ease;                               
+        }
+        .timeline-logo img {
+            transition: all 0.3s ease;
         }
         
+        .timeline-item:hover .timeline-logo img {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
         .timeline-item.visible {
             opacity: 1;
             transform: translateY(0);
@@ -641,11 +730,10 @@
         
         .timeline-item:nth-child(odd) {
             left: 0;
-            text-align: right;
         }
         
         .timeline-item:nth-child(even) {
-            left: 50%;
+            left: 0%;
         }
         
         .timeline-content {
@@ -655,6 +743,7 @@
             box-shadow: var(--shadow);
             position: relative;
             transition: var(--transition);
+            flex: 1;
         }
         
         .timeline-content:hover {
@@ -662,17 +751,6 @@
             box-shadow: var(--shadow-hover);
         }
         
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: white;
-            transform: rotate(45deg);
-            right: -10px;
-            top: 30px;
-            box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.1);
-        }
         
         .timeline-item:nth-child(even) .timeline-content::before {
             left: -10px;
@@ -681,22 +759,16 @@
         }
         
         .timeline-dot {
-            position: absolute;
+            position:relative;
+            left: -32px;            
             width: 24px;
             height: 24px;
             background: var(--gradient-primary);
             border-radius: 50%;
-            top: 30px;
-            right: -12px;
             border: 4px solid white;
             box-shadow: 0 0 0 4px rgba(29, 99, 255, 0.2);
-            z-index: 1;
         }
         
-        .timeline-item:nth-child(even) .timeline-dot {
-            left: -12px;
-            right: auto;
-        }
         
         .timeline-date {
             font-weight: 700;
@@ -720,6 +792,11 @@
             font-size: 1.3rem;
         }
         
+        .timeline-content p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
         .timeline-content ul {
             padding-left: 20px;
             margin-top: 15px;
@@ -728,6 +805,7 @@
         .timeline-content li {
             margin-bottom: 8px;
             position: relative;
+            line-height: 1.6;
         }
         
         .timeline-content li::before {
@@ -1011,6 +1089,10 @@
                 display: flex;
             }
             
+            .language-switcher {
+                display: none;
+            }
+            
             .mobile-menu-btn {
                 display: block;
             }
@@ -1030,7 +1112,11 @@
             .about-stats {
                 grid-template-columns: 1fr;
             }
-            
+
+            .timeline-logo {
+                grid-template-columns: 1fr;
+            }
+
             .tools-grid {
                 grid-template-columns: 1fr;
             }
@@ -1064,6 +1150,14 @@
             .about-text, .contact-info, .contact-form {
                 padding: 30px 20px;
             }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-card {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -1081,13 +1175,17 @@
                 <i class="fas fa-bars"></i>
             </button>
             <nav id="mainNav">
-                <a href="#home" class="active">Home</a>
-                <a href="#about">About</a>
-                <a href="#tools">Tools</a>
-                <a href="#projects">Projects</a>
-                <a href="#experience">Experience</a>
-                <a href="#contact">Contact</a>
+                <a href="#home" class="active">Beranda</a>
+                <a href="#about">Tentang</a>
+                <a href="#skills">Keahlian</a>
+                <a href="#projects">Proyek</a>
+                <a href="#experience">Pengalaman</a>
+                <a href="#contact">Kontak</a>
             </nav>
+                <div class="language-switcher">
+                    <a href="en_cv_v3.html" type="" class="lang-btn" >EN</a>
+                    <button class="lang-btn active" >ID</button>
+                </div>            
         </div>
     </header>
 
@@ -1095,21 +1193,21 @@
     <section id="home" class="hero">
         <div class="container hero-content">
             <div class="hero-text">
-                <h1>Hi, I'm <span>Widhi Dhana Yulistyo</span></h1>
-                <p class="tagline">Sales Operations & Financial Analysis Specialist</p>
-                <p>I have experience in sales operations, inventory management, and financial reconciliation across multi-channel platforms. I'm adept at supporting cross-functional workflows, ensuring data accuracy, and contributing to strategic decision-making.</p>
+                <h1>Widhi Dhana Yulistyo</h1>
+                <p class="tagline">Keuangan & Operasional Penjualan | Data Analyst Junior</p>
+                <p>Lulusan SMK dengan latar belakang Akuntansi dan saat ini sedang menempuh pendidikan Sarjana Manajemen. Memiliki ketertarikan di bidang keuangan dan administrasi. Berpengalaman selama 3 tahun di divisi Finance sebagai Admin, serta terbiasa mengoperasikan Microsoft Excel, software Accurate, dan platform marketplace. Memiliki kemampuan dalam penginputan, pengolahan, dan pelaporan data, analisis data, serta pelacakan inventaris.</p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn">
-                        <i class="fas fa-paper-plane"></i> Get In Touch
+                        <i class="fas fa-paper-plane"></i> Kontak Saya
                     </a>
-                    <a href="#projects" class="btn btn-outline">
-                        <i class="fas fa-briefcase"></i> View My Work
-                    </a>
+                    <button onclick="exportToPDF()" class="btn btn-outline" id="exportPDFBtn">
+                        <i class="fas fa-file-pdf"></i> Unduh CV 
+                    </button>                     
                 </div>
             </div>
             <div class="hero-image">
                 <div class="profile-img-container">
-                    <img src="2profil.png" class="profile-img" alt="Widhi Dhana Yulistyo">
+                    <img src="2profil.png" class="profile-img" alt="Widhi Dhana Yulistyo - Professional Photo">
                 </div>
             </div>
         </div>
@@ -1119,14 +1217,14 @@
     <section id="about" class="about">
         <div class="container">
             <div class="section-title">
-                <h2>About Me</h2>
-                <p>Detail-oriented professional with expertise in sales operations, inventory management, and financial analysis</p>
+                <h2>Tentang Saya</h2>
+                <p>Profesional yang teliti dengan pengalaman di bidang keuangan dan operasional penjualan, manajemen inventaris, serta analisis data</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>I am a detail-oriented professional with a strong background in sales operations, inventory management, and financial reconciliation. My experience spans across multi-channel platforms including e-commerce, offline sales, and partnerships.</p>
-                    <p>I specialize in data analysis, process optimization, and cross-functional collaboration to drive business efficiency and support strategic decision-making. My goal is to leverage my analytical skills and operational expertise to contribute to organizational success.</p>
-                    <p>Throughout my career, I've developed expertise in using various tools and software to streamline operations and improve reporting accuracy, which has directly contributed to business growth and efficiency.</p>
+                    <p>Saya merupakan profesional yang teliti dengan pengalaman di bidang keuangan dan operasional penjualan, manajemen inventaris, serta rekonsiliasi keuangan pada berbagai kanal penjualan, termasuk e-commerce dan penjualan offline.</p>
+                    <p>Saya terbiasa mendukung proses analisis data, pelaporan, dan operasional, serta bekerja sama dengan berbagai tim untuk meningkatkan efisiensi alur kerja dan akurasi data.</p>
+                    <p>Saya memiliki pengalaman dalam menggunakan berbagai alat analisis dan perangkat lunak operasional untuk mendukung proses kerja serta meningkatkan kualitas pelaporan, sehingga membantu pengambilan keputusan bisnis yang lebih tepat.</p>
                 </div>
                 <div class="about-stats">
                     <div class="stat-box">
@@ -1136,12 +1234,12 @@
                     </div>
                     <div class="stat-box">
                         <i class="fas fa-shopping-cart"></i>
-                        <h3>5+</h3>
+                        <h3>4+</h3>
                         <p>E-commerce Platforms Managed</p>
                     </div>
                     <div class="stat-box">
                         <i class="fas fa-calendar-alt"></i>
-                        <h3>4+</h3>
+                        <h3>3+</h3>
                         <p>Years of Experience</p>
                     </div>
                     <div class="stat-box">
@@ -1154,41 +1252,62 @@
         </div>
     </section>
 
-    <!-- Tools Section -->
-    <section id="tools" class="tools">
+    <!-- Skills Section -->
+    <section id="skills" class="tools">
         <div class="container">
             <div class="section-title">
-                <h2>Tools & Software</h2>
-                <p>Technologies and platforms I use to optimize operations and drive business results</p>
+                <h2>Keahlian</h2>
+                <p>Teknologi dan platform yang digunakan untuk mengoptimalkan operasional dan mendukung kinerja bisnis</p>
             </div>
             <div class="tools-grid">
                 <div class="tool-card">
                     <div class="tool-icon">
                         <i class="fas fa-file-excel"></i>
                     </div>
-                    <h3>Microsoft Excel</h3>
-                    <p>Advanced data analysis, formulas, PivotTables, XLOOKUP, Power Query, and comprehensive reporting.</p>
+                    <h3>Microsoft Office</h3>
+                    <p>Penggunaan Microsoft Excel tingkat lanjut (rumus kompleks, PivotTable, XLOOKUP, Power Query), serta penyusunan dokumen di Word dan pembuatan presentasi di PowerPoint.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h3>Google Workspace</h3>
+                    <p>Pengolahan dan pelaporan data menggunakan Google Sheets, pengelolaan dokumen kolaboratif dengan Google Docs, serta pembuatan presentasi melalui Google Slides.</p>
                 </div>
                 <div class="tool-card">
                     <div class="tool-icon">
                         <i class="fas fa-book"></i>
                     </div>
                     <h3>Accurate Online</h3>
-                    <p>Bookkeeping, invoice management, stock tracking, and financial reporting for business operations.</p>
+                    <p>Dukungan pembukuan, pengelolaan invoice, pelacakan inventaris, dan pelaporan keuangan untuk kebutuhan operasional harian.</p>
                 </div>
                 <div class="tool-card">
                     <div class="tool-icon">
                         <i class="fas fa-chart-pie"></i>
                     </div>
-                    <h3>Data Analysis</h3>
-                    <p>Sales data interpretation, trend analysis, performance tracking, and strategic insights generation.</p>
+                    <h3>Analisis Data</h3>
+                    <p>Analisis data penjualan, identifikasi tren, pemantauan kinerja, pelacakan KPI, serta penyusunan laporan untuk mendukung pengambilan keputusan bisnis.</p>
                 </div>
                 <div class="tool-card">
                     <div class="tool-icon">
                         <i class="fas fa-warehouse"></i>
                     </div>
-                    <h3>Inventory Management</h3>
-                    <p>Multi-warehouse stock tracking, inventory flow optimization, and supply chain coordination.</p>
+                    <h3>Manajemen Inventaris </h3>
+                    <p>Pelacakan stok di berbagai lokasi, pemantauan alur inventaris, dan pengendalian tingkat persediaan untuk meningkatkan efisiensi operasional.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Manajemen Data</h3>
+                    <p>Penginputan data, validasi data, pemeliharaan basis data, pengelolaan informasi, serta pengendalian kualitas data.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Pengembangan Web</h3>
+                    <p>Pengembangan dan pemeliharaan website sederhana, platform e-commerce, serta solusi bisnis online menggunakan HTML, CSS, JavaScript, dan PHP.</p>
                 </div>
             </div>
         </div>
@@ -1198,31 +1317,31 @@
     <section id="projects" class="projects">
         <div class="container">
             <div class="section-title">
-                <h2>My Projects</h2>
-                <p>Real-world applications of my skills in sales operations and financial analysis</p>
+                <h2>Proyek Profesional</h2>
+                <p>Pilihan proyek yang mencerminkan pengalaman di bidang operasional penjualan dan analisis data</p>
             </div>
             <div class="projects-grid">
                 <div class="project-card">
-                    <img src="Screenshot 2026-01-29 004912.png" alt="Sales Dashboard" class="project-img">
+                    <img src="Screenshot 2026-01-29 004912.png" alt="Sales Performance Dashboard" class="project-img">
                     <div class="project-content">
-                        <h3>Sales Dashboard Development</h3>
-                        <p>Created comprehensive sales dashboards for multi-channel performance tracking and decision support with interactive visualizations and real-time data updates.</p>
-                        <a href="https://yjpg4915x1t4.jp.larksuite.com/base/XPDcbNntQaHUPks7QgdjdBeFpSh?from=from_copylink" target="_blank" class="btn project-btn">
-                            <i class="fas fa-external-link-alt"></i> Visit Dashboard
+                        <h3>Dashboard Kinerja Penjualan</h3>
+                        <p>Mengembangkan dashboard penjualan komprehensif untuk memantau kinerja multi-channel dan mendukung pengambilan keputusan berbasis data. Fitur meliputi visualisasi interaktif, pembaruan data secara real-time, serta analisis kinerja.</p>
+                        <a href="https://yjpg4915x1t4.jp.larksuite.com/base/XPDcbNntQaHUPks7QgdjdBeFpSh?from=from_copylink" target="_blank" rel="noopener noreferrer" class="btn project-btn">
+                            <i class="fas fa-external-link-alt"></i> Lihat Dashboard
                         </a>
                     </div>
                 </div>
                 
                 <div class="project-card">
-                    <img src="Screenshot 2026-01-29 005430.png" alt="Online Store" class="project-img">
+                    <img src="Screenshot 2026-01-29 005430.png" alt="E-commerce Platform" class="project-img">
                     <div class="project-content">
-                        <h3>Online Web Store</h3>
-                        <p>Developed and managed a personal online store to improve inventory tracking and financial management processes with integrated analytics.</p>
-                        <a href="https://toko-widhi.page.gd/index.php" target="_blank" class="btn project-btn">
-                            <i class="fas fa-external-link-alt"></i> Visit Store
+                        <h3>Platform E-Commerce</h3>
+                        <p>Merancang dan mengimplementasikan toko online dengan sistem manajemen inventaris dan pelacakan keuangan terintegrasi. Meningkatkan efisiensi operasional melalui pelaporan dan analisis data otomatis.</p>
+                        <a href="https://toko-widhi.page.gd/index.php" target="_blank" rel="noopener noreferrer" class="btn project-btn">
+                            <i class="fas fa-external-link-alt"></i> Lihat Platform
                         </a>
                     </div>
-                </div>
+                </div>                
             </div>
         </div>
     </section>
@@ -1231,94 +1350,176 @@
     <section id="experience" class="experience">
         <div class="container">
             <div class="section-title">
-                <h2>Work Experience</h2>
-                <p>My professional journey and career progression</p>
+                <h2>Pengalaman Kerja</h2>
+                <p>Perjalanan Karier dan Pengembangan Profesional</p>
             </div>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">Jan 2024 - Present</span>
+                       <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
+                        <img src="assets/logo ipg.jpg" style="width: 70px;border-radius: 10px;"></a>                           
+                        <span class="timeline-date">January 2024 - Saat Ini</span>                     
                         <span class="timeline-company">PT Indonesia Premium Goods</span>
-                        <h3>Sales Analyst & Accounting</h3>
-                        <p>Reconciliation and analysis of multi-channel sales transactions (e-commerce, offline, and partnerships), while overseeing inventory flow and supporting financial operations.</p>
+                        <h3>Sales Operations Analyst</h3>
+                        <p><i>(Sales Analysis & Inventory Control)</i></p>
                         <ul>
-                            <li>Processed sales data from 5+ e-commerce platforms</li>
-                            <li>Contributed to 15% reduction in monthly reporting errors</li>
-                            <li>Oversaw inventory movements across multiple warehouses</li>
+                            <li>Menyusun dan merekonsiliasi laporan penjualan sebagai dasar pengambilan keputusan bisnis.</li>
+                            <li>Menganalisis data penjualan untuk identifikasi tren, peramalan, dan strategi promosi.</li>
+                            <li>Mengelola database penjualan, integrasi data antar-sistem, serta keuangan marketplace.</li>
+                            <li>Mengontrol persediaan (barang dagang, bahan baku & pembantu), termasuk pencatatan, monitoring stok, dan stock opname.</li>
+                            <li>Menginvestigasi selisih stok serta menyusun laporan persediaan untuk manajemen.</li>
+                            <li>Berkoordinasi dengan tim internal lainnya seperti finance, purchasing, dan product team terkait
+kebutuhan data (untuk strategi dan promosi).</li>
                         </ul>
                     </div>
+                    <div class="timeline-logo-stats">                    
+                    <div class="timeline-logo">
+                        <a href="https://www.instagram.com/elvicto.id/" target="_blank">
+                        <img src="assets/logo elvicto.jpg" alt="Elvicto"> </a>
+                    </div>
+                    <div class="timeline-logo">
+                        <a href="https://www.instagram.com/onix.id/" target="_blank">
+                        <img src="assets/logo onix.jpg" alt="Onix"> </a>
+                    </div>   
+                    </div>                                     
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">Jan 2023 - Jan 2024</span>
+                       <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
+                        <img src="assets/logo ipg.jpg" style="width: 70px;border-radius: 10px;"></a>                         
+                        <span class="timeline-date">Maret - April 2024</span>
                         <span class="timeline-company">PT Indonesia Premium Goods</span>
-                        <h3>Sales Administration Coordinator</h3>
-                        <p>Handled day-to-day sales operations and administrative support across various sales channels, including e-commerce, offline, and event-based transactions.</p>
+                        <h3>Accounting</h3>
                         <ul>
-                            <li>Managed order processing and customer data</li>
-                            <li>Coordinated warehouse and logistics teams</li>
-                            <li>Generated regular multi-channel sales reports</li>
+                            <li>Memverifikasi kelengkapan dokumen yang akan diproses pembayaran.</li>
+                            <li>Memproses pengajuan pembayaran yang masuk dari semua divisi ke finance.</li>
+                            <li>Menginput jurnal transaksi (Pembayaran, Penerimaan, Penjualan, Pembelian, dan Penyesuaian).</li>
+                            <li>Membuat laporan keuangan (neraca & laba rugi).</li>
+                            <li>Mengarsipkan dokumen transaksi.</li>
                         </ul>
                     </div>
+                    <div class="timeline-logo-stats">                    
+                    <div class="timeline-logo">
+                        <a href="https://shopee.co.id/maskova.id?entryPoint=ShopByPDP" target="_blank">
+                        <img src="assets/logo maskova.jpg" alt="Maskova"> </a>
+                    </div>
+                    <div class="timeline-logo">
+                        <a href="https://shopee.co.id/faceandglow.beauty" target="_blank">
+                        <img src="assets/logo face&glow.jpg" alt="Face&Glow"> </a>
+                    </div>   
+                    </div>                           
+                    </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                       <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
+                        <img src="assets/logo ipg.jpg" style="width: 70px;border-radius: 10px;"></a>                         
+                        <span class="timeline-date">January 2023 - Februari 2024</span>
+                        <span class="timeline-company">PT Indonesia Premium Goods</span>
+                        <h3>Admin Sales Support</h3>
+                        <ul>
+                            <li>Menangani administrasi penjualan harian serta memastikan akurasi entri data penjualan dan persediaan.</li>
+                            <li>Mencatat transaksi penjualan online (marketplace) dan offline (distributor, konsinyasi, dll), termasuk retur penjualan.</li>
+                            <li>Membuat Invoice untuk penjualan Offline.</li>
+                            <li>Mengelola data pelanggan dan pembuatan invoice penjualan offline.</li>
+                            <li>Berkoordinasi dengan tim Sales, Gudang, dan Logistik untuk memastikan proses pengiriman berjalan tepat waktu.</li>
+                            <li>Menyusun laporan penjualan harian, mingguan, dan bulanan serta menjaga dokumentasi tetap rapi.</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-logo-stats">                    
+                    <div class="timeline-logo">
+                        <a href="https://www.instagram.com/allperfect.id/" target="_blank">
+                        <img src="assets/logo all perfect.jpg" alt="All Perfect"> </a>
+                    </div>
+                    <div class="timeline-logo">
+                        <a href="https://www.instagram.com/leobos.id/" target="_blank">
+                        <img src="assets/logo leobos.jpg" alt="Leobos"> </a>
+                    </div>   
+                    </div> 
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">Jan 2022 - Jan 2023</span>
+                       <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
+                        <img src="assets/logo ipg.jpg" style="width: 70px;border-radius: 10px;"></a>                         
+                        <span class="timeline-date">January 2022 - Januari 2023</span>
                         <span class="timeline-company">PT Indonesia Premium Goods</span>
                         <h3>Housekeeper / Office Boy</h3>
-                        <p>Supported daily operations by maintaining hygiene and order in office and warehouse environments.</p>
                         <ul>
-                            <li>Scheduled and executed cleaning routines</li>
-                            <li>Maintained organization in storage areas</li>
-                            <li>Coordinated with facilities and admin teams</li>
+                            <li>Mendukung operasional harian dengan menjaga kebersihan dan kerapihan area kantor serta gudang.</li>
+                            <li>Menjalankan jadwal kebersihan rutin di berbagai area kerja.</li>
+                            <li>Memantau dan mengelola ketersediaan perlengkapan kebersihan.</li>
+                            <li>Memastikan penerapan standar kebersihan dan keselamatan kerja.</li>
+                            <li>Berkoordinasi dengan tim fasilitas dan administrasi untuk kebutuhan operasional.</li>
                         </ul>
                     </div>
+                     <div class="timeline-logo-stats">                    
+                    <div class="timeline-logo">
+                        <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
+                        <img src="assets/ilustrasi OB.png" > </a>
+                    </div>
+                    <div class="timeline-logo">
+                        <a href="" target="_blank">
+                        <img src="" > </a>
+                    </div>   
+                    </div>     
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">Nov 2021 - Jan 2022</span>
+                       <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
+                        <img src="assets/logo psp ayam blenger.jpg" style="width: 70px;border-radius: 10px;"></a>                         
+                        <span class="timeline-date">November 2021 - Januari 2022</span>
                         <span class="timeline-company">PSP Ayam Blenger</span>
-                        <h3>Kitchen Helper</h3>
-                        <p>Supported back-of-house operations to ensure food quality and kitchen efficiency. Helped with basic food preparation and sanitation tasks.</p>
+                        <h3>Kitchen Helper / Waitress</h3>
                         <ul>
-                            <li>Prepared ingredients and assisted in cooking processes as needed.</li>
-                            <li>Restocked supplies and kept inventory organized.</li>
-                            <li>Maintained kitchen cleanliness in accordance with hygiene standards.</li>
+                            <li>Mendukung operasional restoran baik di area dapur maupun pelayanan pelanggan.</li>
+                            <li>Menyiapkan bahan makanan, membantu proses memasak, serta menjaga kebersihan dapur sesuai standar higienitas.</li>
+                            <li>Melayani pelanggan dine-in dan take-away, mencatat pesanan secara akurat, serta menyajikan makanan dengan efisien.</li>
+                            <li>Menangani pertanyaan dan keluhan pelanggan dengan sopan.</li>
+                            <li>Menjaga kebersihan dan kerapihan area kerja serta mengelola persediaan operasional.</li>
                         </ul>
                     </div>
-                </div>
+                     <div class="timeline-logo-stats">                    
+                    <div class="timeline-logo">
+                        <a href="https://www.instagram.com/pspayamblenger/" target="_blank">
+                        <img src="assets/sample 1 makanan psp.jpg" alt="PSP Ayam Blenger" > </a>
+                    </div>
+                    <div class="timeline-logo">
+                        <a href="https://www.instagram.com/pspayamblenger/" target="_blank">
+                        <img src="assets/sample 2 makanan psp.jpg" alt="PSP Ayam Blenger"> </a>
+                    </div>   
+                    </div>     
+                </div> 
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">Oct 2021 – Nov 2021</span>
-                        <span class="timeline-company">PSP Ayam Blenger</span>
-                        <h3>Waitress</h3>
-                        <p>Provided front-line customer service during dine-in and take-away operations. Ensured a smooth ordering experience and helped maintain a welcoming environment.</p>
+                       <a href="https://autologistik.co.id/" target="_blank">
+                        <img src="assets/logo auto logistik.jpg" style="width: 70px;border-radius: 10px;"></a>                         
+                        <span class="timeline-date">Januari 2020 - April 2020</span>
+                        <span class="timeline-company">PT Andalan Utama Transportasi Otomotif</span>
+                        <h3>Internship (Finance & Logistics Support)</h3>
                         <ul>
-                            <li>Took customer orders accurately and communicated them to the kitchen team.</li>
-                            <li>Served food and beverages efficiently, especially during peak hours.</li>
-                            <li>Handled customer inquiries and resolved minor complaints politely.</li>
+                            <li>Mendukung tim Finance dan Logistik dalam kegiatan operasional harian.</li>
+                            <li>Membantu penyusunan dan pengelolaan laporan keuangan.</li>
+                            <li>Memperbarui dan menjaga akurasi data pengiriman/logistik.</li>
+                            <li>Mendukung koordinasi antara fungsi Finance dan Logistik.</li>
+                            <li>Mengembangkan kemampuan analisis data, ketelitian, dan kerja tim.</li>
                         </ul>
                     </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Jan 2020 - Apr 2020</span>
-                        <span class="timeline-company">PT. Andalan Utama Transportasi Otomotif</span>
-                        <h3>Internship</h3>
-                        <p>Supported the finance team and logistics department in daily operational tasks, gaining hands-on experience in financial reporting and delivery data management.</p>
-                        <ul>
-                            <li>Assisted finance team in preparing and organizing financial reports.</li>
-                            <li>Updated and maintained logistics delivery data to ensure accuracy and timeliness.</li>
-                            <li>Supported coordination between finance and logistics functions.</li>
-                        </ul>
+                     <div class="timeline-logo-stats">                    
+                    <div class="timeline-logo">
+                        <a href="https://autologistik.co.id/" target="_blank">
+                        <img src="assets/ilustrasi auto logistik.jpg" alt="PSP Ayam Blenger" > </a>
                     </div>
-                </div>
+                    <div class="timeline-logo">
+                        <a href="https://autologistik.co.id/" target="_blank">
+                        <img src="assets/ilustrasi 2 auto logistik.jpg" > </a>
+                    </div>   
+                    </div>     
+                </div>                                
             </div>
         </div>
     </section>
@@ -1327,20 +1528,20 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Contact Me</h2>
-                <p>Let's discuss how I can contribute to your organization's success</p>
+                <h2>Professional Contact</h2>
+                <p>Connect with me to discuss strategic opportunities and potential collaborations</p>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>Feel free to reach out for collaborations, opportunities, or just to say hello!</p>
+                    <h3>Contact Information</h3>
+                    <p>Available for professional consultations, collaborative opportunities, and strategic discussions.</p>
                     
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div>
-                            <h4>Email</h4>
+                            <h4>Email Address</h4>
                             <a href="mailto:widhi.dhana80@gmail.com">widhi.dhana80@gmail.com</a>
                         </div>
                     </div>
@@ -1350,8 +1551,8 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <div>
-                            <h4>Phone</h4>
-                            <a href="https://wa.me/6285894078040">+62 858-9407-8040</a>
+                            <h4>Phone Number</h4>
+                            <a href="https://wa.me/6285894078040" rel="noopener noreferrer">+62 858 9407 8040</a>
                         </div>
                     </div>
 
@@ -1360,8 +1561,8 @@
                             <i class="fab fa-linkedin"></i>
                         </div>
                         <div>
-                            <h4>LinkedIn</h4>
-                            <a href="https://www.linkedin.com/in/widhi-dhana/">Widhi Dhana Yulistyo</a>
+                            <h4>LinkedIn Profile</h4>
+                            <a href="https://www.linkedin.com/in/widhi-dhana/" target="_blank" rel="noopener noreferrer">Widhi Dhana Yulistyo</a>
                         </div>
                     </div>
                     
@@ -1371,7 +1572,7 @@
                         </div>
                         <div>
                             <h4>Instagram</h4>
-                            <a href="https://www.instagram.com/dhana.8/">dhana.8</a>
+                            <a href="https://www.instagram.com/dhana.8/" target="_blank" rel="noopener noreferrer">dhana.8</a>
                         </div>
                     </div>
 
@@ -1391,22 +1592,22 @@
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text" id="name" placeholder="Enter your name" required>
+                            <input type="text" id="name" placeholder="Enter your full name" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" placeholder="Enter your email" required>
+                            <input type="email" id="email" placeholder="Enter your email address" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <input type="text" id="subject" placeholder="What is this regarding?" required>
+                            <input type="text" id="subject" placeholder="Message subject" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="message">Your Message</label>
-                            <textarea id="message" placeholder="Please write your message here..." required></textarea>
+                            <textarea id="message" placeholder="Please provide details regarding your inquiry" required></textarea>
                         </div>
                         
                         <button type="submit" class="btn">
@@ -1425,16 +1626,16 @@
                 <div class="footer-logo">
                     <h3>Widhi Dhana Yulistyo</h3>
                     <p>Sales Operations & Financial Analysis Specialist</p>
-                </div>
+                </div>                       
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/widhi-dhana/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/dhana.8/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/widhi-dhana/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/dhana.8/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                     <a href="mailto:widhi.dhana80@gmail.com"><i class="fas fa-envelope"></i></a>
-                    <a href="https://wa.me/6285894078040" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://wa.me/6285894078040" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Widhi Dhana Yulistyo. All rights reserved.</p>
+                <p>&copy; <span id="currentYear"></span> Widhi Dhana Yulistyo. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1550,7 +1751,7 @@
                 const successMessage = document.createElement('div');
                 successMessage.innerHTML = `
                     <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 10px; margin-top: 20px; border: 1px solid #c3e6cb;">
-                        <i class="fas fa-check-circle"></i> Thank you ${name}! Your message has been sent successfully. I'll get back to you soon at ${email}.
+                        <i class="fas fa-check-circle"></i> Thank you ${name}! Your message has been sent successfully. I will respond to ${email} promptly.
                     </div>
                 `;
                 contactForm.appendChild(successMessage);
@@ -1605,14 +1806,422 @@
             observer.observe(el);
         });
         
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
         // Initialize with header scroll
         window.dispatchEvent(new Event('scroll'));
+
+// PDF Export Function - Improved Layout
+function exportToPDF() {
+    // Sembunyikan tombol PDF saat proses export
+    const pdfBtn = document.getElementById('exportPDFBtn');
+    const originalBtnText = pdfBtn.innerHTML;
+    pdfBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
+    pdfBtn.disabled = true;
+    
+    // Membuat instance jsPDF
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4'
+    });
+    
+    // Mengatur properti dokumen
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const margin = 20;
+    const contentWidth = pageWidth - (margin * 2);
+    let yPos = margin;
+    
+    // Fungsi untuk menambahkan halaman baru jika diperlukan
+    function checkPageHeight(y, addHeight = 10) {
+        if (y >= doc.internal.pageSize.getHeight() - margin) {
+            doc.addPage();
+            return margin;
+        }
+        return y;
+    }
+    
+    // Fungsi untuk menambahkan garis pemisah
+    function addDivider() {
+        yPos = checkPageHeight(yPos, 5);
+        doc.setDrawColor(200, 200, 200);
+        doc.line(margin, yPos, pageWidth - margin, yPos);
+        yPos += 8;
+    }
+    
+    // Fungsi untuk menambahkan spasi
+    function addSpacing(height = 5) {
+        yPos += height;
+        yPos = checkPageHeight(yPos, height);
+    }
+    
+    // Fungsi untuk menambahkan heading dengan styling
+    function addHeading(text, size = 18, isSection = false) {
+        yPos = checkPageHeight(yPos, size + 5);
+        
+        
+        doc.setFontSize(size);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(isSection ? 29 : 0, isSection ? 99 : 0, isSection ? 255 : 0);
+        doc.text(text, margin, yPos);
+        
+        if (isSection) {
+            // Garis dekoratif di bawah section title
+            doc.setDrawColor(255, 107, 53);
+            doc.setLineWidth(1.5);
+            doc.line(margin, yPos + 2, margin + 50, yPos + 2);
+            doc.setLineWidth(0.2);
+        }
+        
+        doc.setTextColor(0, 0, 0);
+        yPos += size / 2 + 5;
+        return yPos;
+    }
+    
+    // Fungsi untuk menambahkan teks paragraf
+    function addParagraph(text, options = {}) {
+        const fontSize = options.fontSize || 10;
+        const isBold = options.bold || false;
+        const indent = options.indent || 0;
+        const color = options.color || [0, 0, 0];
+        const maxWidth = contentWidth - indent;
+        const align = options.align || 'justify';
+        
+        yPos = checkPageHeight(yPos, fontSize + 2);
+        
+        doc.setFontSize(fontSize);
+        doc.setFont('helvetica', isBold ? 'bold' : 'normal');
+        doc.setTextColor(...color);
+        
+        const lines = doc.splitTextToSize(text, maxWidth);
+        
+        lines.forEach(line => {
+            yPos = checkPageHeight(yPos, fontSize + 2);
+            doc.text(line, margin + indent, yPos);
+            yPos += fontSize / 2 + 2;
+        });
+        
+        doc.setTextColor(0, 0, 0);
+        doc.setFont('helvetica', 'normal');
+        return yPos;
+    }
+    
+    // Fungsi untuk menambahkan bullet point
+    function addBulletPoint(text, indent = 10) {
+        yPos = checkPageHeight(yPos, 10);
+        doc.setFontSize(10);
+        doc.text('•', margin, yPos);
+        doc.text(text, margin + 5, yPos, { maxWidth: contentWidth - 5 - indent });
+        
+        // Hitung berapa baris yang digunakan
+        const lines = doc.splitTextToSize(text, contentWidth - 5 - indent);
+        yPos += (lines.length * 5) + 2;
+        return yPos;
+    }
+    
+    // Fungsi untuk menambahkan gambar profil
+    function addProfileImage(imgElement) {
+        return new Promise((resolve, reject) => {
+            try {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const img = imgElement;
+                
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0, img.width, img.height);
+                
+                const imgData = canvas.toDataURL('image/jpeg', 0.9);
+                
+                // Posisi gambar di pojok kanan atas
+                const imgWidth = 40;
+                const imgHeight = 40;
+                const imgX = pageWidth - margin - imgWidth;
+                const imgY = margin + 5;
+                
+                // Tambahkan border pada gambar
+                doc.setDrawColor(29, 99, 255);
+                doc.setLineWidth(0.5);
+                doc.roundedRect(imgX - 2, imgY - 2, imgWidth + 4, imgHeight + 4, 5, 5, 'S');
+                
+                // Tambahkan gambar ke PDF
+                doc.addImage(imgData, 'PNG', imgX, imgY, imgWidth, imgHeight);
+                
+                resolve();
+            } catch (error) {
+                console.error('Error adding image to PDF:', error);
+                reject(error);
+            }
+        });
+    }
+    
+    // Main function to generate PDF content
+    async function generatePDFContent() {
+        try {
+            // === HEADER ===
+            doc.setFillColor(29, 99, 255);
+            doc.rect(0, 0, pageWidth, 40, 'F');
+
+            // === PROFILE IMAGE ===
+
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(22);
+            doc.setFont('helvetica', 'bold');
+            doc.text('WIDHI DHANA YULISTYO', pageWidth / 2, 18, { align: 'center' });
+            
+            doc.setFontSize(12);
+            doc.setFont('helvetica', 'normal');
+            doc.text('Sales Operations & Financial Analysis Specialist', pageWidth / 2, 25, { align: 'center' });
+            
+
+            // Reset yPos setelah header
+            yPos = 50;
+            
+            
+            // === PROFESSIONAL SUMMARY ===
+            addHeading('PROFESSIONAL SUMMARY', 16, true);
+            
+            const heroDesc = document.querySelector('.hero p:not(.tagline)');
+            if (heroDesc) {
+                addParagraph(heroDesc.textContent || heroDesc.innerText, {
+                    fontSize: 11,
+                    indent: 0,
+                });
+            }
+            
+            addSpacing(1.5);
+            
+            // === KEY ACHIEVEMENTS ===
+            addHeading('KEY ACHIEVEMENTS', 16, true);
+            
+            const achievements = [
+                '15% reduction in monthly reporting errors through process optimization',
+                'Managed sales data from 5+ e-commerce platforms simultaneously',
+                'Oversaw inventory across multiple warehouse locations',
+                'Contributed to improved data accuracy and reporting efficiency'
+            ];
+            
+            achievements.forEach(achievement => {
+                addBulletPoint(achievement);
+            });
+            
+            addSpacing(1.5);
+            
+            // === TECHNICAL SKILLS ===
+            addHeading('TECHNICAL SKILLS', 16, true);
+            
+            const skillCategories = [
+                {
+                    category: 'Software & Tools',
+                    skills: 'Microsoft Office (Advanced Excel), Google Workspace, Accurate Online'
+                },
+                {
+                    category: 'Data Analysis',
+                    skills: 'Sales data analysis, trend identification, KPI tracking, performance reporting'
+                },
+                {
+                    category: 'Inventory Management',
+                    skills: 'Stock tracking, inventory flow monitoring, multi-location management'
+                },
+                {
+                    category: 'Web Development',
+                    skills: 'HTML, CSS, JavaScript, PHP, e-commerce platforms'
+                }
+            ];
+            
+            skillCategories.forEach(category => {
+                addParagraph(category.category + ':', { bold: true, fontSize: 11 });
+                addParagraph(category.skills, { indent: 5, fontSize: 10 });
+                addSpacing(1.5);
+            });
+            
+            addSpacing(1.5);
+            
+            // === PROFESSIONAL EXPERIENCE ===
+            addHeading('EXPERIENCE', 16, true);
+            
+            const timelineItems = document.querySelectorAll('.timeline-content');
+            timelineItems.forEach((item, index) => {
+                const date = item.querySelector('.timeline-date');
+                const company = item.querySelector('.timeline-company');
+                const title = item.querySelector('h3');
+                const desc = item.querySelector('p');
+                const listItems = item.querySelectorAll('li');
+                
+                if (date && company && title) {
+                    // Tanggal dan perusahaan
+                    addParagraph(`${date.textContent} | ${company.textContent}`, {
+                        bold: true,
+                        fontSize: 11,
+                        color: [29, 99, 255]
+                    });
+                    
+                    // Judul posisi
+                    addParagraph(title.textContent, {
+                        bold: true,
+                        fontSize: 12
+                    });
+                    
+                    // Deskripsi
+                    if (desc) {
+                        addParagraph(desc.textContent, {
+                            fontSize: 10,
+                            indent: 0
+                        });
+                    }
+                    
+                    // Bullet points
+                    listItems.forEach(li => {
+                        addBulletPoint(li.textContent, 10);
+                    });
+                    
+                    // Tambahkan spasi antar pengalaman (kecuali untuk yang terakhir)
+                    if (index < timelineItems.length - 1) {
+                        addSpacing(1.5);
+                        addDivider();
+                        addSpacing(1.5);
+                    }
+                }
+            });
+            
+            addSpacing(15);
+            
+            // === EDUCATION ===
+            addHeading('EDUCATION', 16, true);
+            
+            addParagraph('SMK (Vocational High School)', { bold: true, fontSize: 11,});
+            addParagraph('Accounting Graduate', { indent: 5, fontSize: 10 });
+            addSpacing(5);
+            
+            addParagraph('Universitas Terbuka (Open University)', { bold: true, fontSize: 11 });
+            addParagraph('Bachelor\'s Degree in Management (Currently Pursuing)', { indent: 5, fontSize: 10 });
+            
+            addSpacing(15);
+            
+            // === CONTACT INFO ===
+            addHeading('CONTACT INFORMATION', 16, true);
+            
+            // Email
+            addParagraph('Email: widhi.dhana80@gmail.com', { fontSize: 10 });
+            
+            // Phone
+            addParagraph('Phone: +62 858 9407 8040', { fontSize: 10 });
+            
+            // LinkedIn
+            addParagraph('LinkedIn: linkedin.com/in/widhi-dhana', { fontSize: 10 });
+            
+            // Instagram
+            addParagraph('Instagram: @dhana.8', { fontSize: 10 });
+            
+            addSpacing(10);
+
+            // === FOOTER ===
+            const totalPages = doc.internal.getNumberOfPages();
+            for (let i = 1; i <= totalPages; i++) {
+                doc.setPage(i);
+                
+                // Footer line
+                doc.setDrawColor(29, 99, 255);
+                doc.setLineWidth(0.5);
+                doc.line(margin, doc.internal.pageSize.getHeight() - 20, pageWidth - margin, doc.internal.pageSize.getHeight() - 20);
+                
+                // Footer text
+                doc.setFontSize(9);
+                doc.setTextColor(100, 100, 100);
+                doc.text('CV - Widhi Dhana Yulistyo', margin, doc.internal.pageSize.getHeight() - 15);
+                doc.text(`Page ${i} of ${totalPages}`, pageWidth - margin, doc.internal.pageSize.getHeight() - 15, { align: 'right' });
+                doc.setFontSize(8);
+                doc.text('Last updated: ' + new Date().toLocaleDateString(), pageWidth / 2, doc.internal.pageSize.getHeight() - 10, { align: 'center' });
+            }
+            
+        } catch (error) {
+            console.error('Error generating PDF:', error);
+        }
+    }
+    
+    // Generate PDF content and save
+    generatePDFContent().then(() => {
+        // Simpan PDF
+        doc.save('Widhi_Dhana_Professional_CV.pdf');
+        
+        // Kembalikan tombol ke state semula
+        pdfBtn.innerHTML = originalBtnText;
+        pdfBtn.disabled = false;
+        
+        // Tampilkan notifikasi sukses
+        showNotification('PDF successfully generated!', 'success');
+    }).catch(error => {
+        console.error('PDF generation failed:', error);
+        
+        // Kembalikan tombol ke state semula
+        pdfBtn.innerHTML = originalBtnText;
+        pdfBtn.disabled = false;
+        
+        // Tampilkan notifikasi error
+        showNotification('Failed to generate PDF. Please try again.', 'error');
+    });
+    
+    // Helper function untuk menampilkan notifikasi
+    function showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: ${type === 'success' ? '#4CAF50' : '#f44336'};
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            transform: translateX(120%);
+            animation: slideIn 0.3s forwards;
+        `;
+        
+        notification.innerHTML = `
+            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+            ${message}
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.style.animation = 'slideOut 0.3s forwards';
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 3000);
+        
+        // Tambahkan stylesheet untuk animasi
+        if (!document.getElementById('notification-styles')) {
+            const style = document.createElement('style');
+            style.id = 'notification-styles';
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(120%); }
+                    to { transform: translateX(0); }
+                }
+                @keyframes slideOut {
+                    from { transform: translateX(0); }
+                    to { transform: translateX(120%); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+}
+
+// Tambahkan event listener untuk tombol PDF
+document.addEventListener('DOMContentLoaded', function() {
+    const pdfBtn = document.getElementById('exportPDFBtn');
+});
+
     </script>
 </body>
 </html>
-
-
-
-
-
-
