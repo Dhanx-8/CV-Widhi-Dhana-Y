@@ -1230,22 +1230,22 @@
                     <div class="stat-box">
                         <i class="fas fa-chart-line"></i>
                         <h3>15%</h3>
-                        <p>Reduction in Reporting Errors</p>
+                        <p>Penurunan Kesalahan Pelaporan</p>
                     </div>
                     <div class="stat-box">
                         <i class="fas fa-shopping-cart"></i>
                         <h3>4+</h3>
-                        <p>E-commerce Platforms Managed</p>
+                        <p>Platforms E-commerce yang Dikelola</p>
                     </div>
                     <div class="stat-box">
                         <i class="fas fa-calendar-alt"></i>
                         <h3>3+</h3>
-                        <p>Years of Experience</p>
+                        <p>Tahun Pengalaman</p>
                     </div>
                     <div class="stat-box">
                         <i class="fas fa-check-circle"></i>
                         <h3>100%</h3>
-                        <p>Data Accuracy Commitment</p>
+                        <p>Komitmen Akurasi Data</p>
                     </div>
                 </div>
             </div>
@@ -1286,7 +1286,7 @@
                         <i class="fas fa-chart-pie"></i>
                     </div>
                     <h3>Analisis Data</h3>
-                    <p>Analisis data penjualan, identifikasi tren, pemantauan kinerja, pelacakan KPI, serta penyusunan laporan untuk mendukung pengambilan keputusan bisnis.</p>
+                    <p>Analisis data penjualan, identifikasi tren, pemantauan kinerja, serta penyusunan laporan untuk mendukung pengambilan keputusan bisnis.</p>
                 </div>
                 <div class="tool-card">
                     <div class="tool-icon">
@@ -1946,7 +1946,7 @@ function exportToPDF() {
             
             
             // === PROFESSIONAL SUMMARY ===
-            addHeading('PROFESSIONAL SUMMARY', 16, true);
+            addHeading('Tentang Saya', 16, true);
             
             const heroDesc = document.querySelector('.hero p:not(.tagline)');
             if (heroDesc) {
@@ -1959,13 +1959,13 @@ function exportToPDF() {
             addSpacing(1.5);
             
             // === KEY ACHIEVEMENTS ===
-            addHeading('KEY ACHIEVEMENTS', 16, true);
+            addHeading('Pencapaian Utama', 16, true);
             
             const achievements = [
-                '15% reduction in monthly reporting errors through process optimization',
-                'Managed sales data from 5+ e-commerce platforms simultaneously',
-                'Oversaw inventory across multiple warehouse locations',
-                'Contributed to improved data accuracy and reporting efficiency'
+                  'Mengurangi kesalahan laporan bulanan sebesar 15% melalui optimalisasi proses',
+                  'Mengelola data penjualan dari lebih dari 5 platform e-commerce secara bersamaan',
+                  'Mengawasi dan mengelola inventaris di beberapa lokasi gudang',
+                  'Berkontribusi dalam peningkatan akurasi data dan efisiensi pelaporan'
             ];
             
             achievements.forEach(achievement => {
@@ -1975,25 +1975,22 @@ function exportToPDF() {
             addSpacing(1.5);
             
             // === TECHNICAL SKILLS ===
-            addHeading('TECHNICAL SKILLS', 16, true);
+            addHeading('Keahlian', 16, true);
             
             const skillCategories = [
                 {
-                    category: 'Software & Tools',
-                    skills: 'Microsoft Office (Advanced Excel), Google Workspace, Accurate Online'
+                  category: 'Perangkat Lunak',
+                  skills: 'Microsoft Office (Excel Tingkat Lanjut), Google Workspace, Accurate Online'
                 },
                 {
-                    category: 'Data Analysis',
-                    skills: 'Sales data analysis, trend identification, KPI tracking, performance reporting'
+                  category: 'Analisis Data',
+                  skills: 'Analisis data penjualan, identifikasi tren, pelaporan kinerja'
                 },
                 {
-                    category: 'Inventory Management',
-                    skills: 'Stock tracking, inventory flow monitoring, multi-location management'
+                  category: 'Manajemen Inventaris',
+                  skills: 'Pencatatan stok, pemantauan alur inventaris, pengelolaan multi-lokasi'
                 },
-                {
-                    category: 'Web Development',
-                    skills: 'HTML, CSS, JavaScript, PHP, e-commerce platforms'
-                }
+
             ];
             
             skillCategories.forEach(category => {
@@ -2060,19 +2057,19 @@ function exportToPDF() {
             addParagraph('Accounting Graduate', { indent: 5, fontSize: 10 });
             addSpacing(5);
             
-            addParagraph('Universitas Terbuka (Open University)', { bold: true, fontSize: 11 });
-            addParagraph('Bachelor\'s Degree in Management (Currently Pursuing)', { indent: 5, fontSize: 10 });
+            addParagraph('Universitas Bina Sarana Informatika', { bold: true, fontSize: 11 });
+            addParagraph('S1 Manajemen (Sedang Menempuh)', { indent: 5, fontSize: 10 });
             
             addSpacing(15);
             
             // === CONTACT INFO ===
-            addHeading('CONTACT INFORMATION', 16, true);
+            addHeading('Informasi kontak', 16, true);
             
             // Email
             addParagraph('Email: widhi.dhana80@gmail.com', { fontSize: 10 });
             
             // Phone
-            addParagraph('Phone: +62 858 9407 8040', { fontSize: 10 });
+            addParagraph('Telepon: +62 858 9407 8040', { fontSize: 10 });
             
             // LinkedIn
             addParagraph('LinkedIn: linkedin.com/in/widhi-dhana', { fontSize: 10 });
@@ -2109,7 +2106,7 @@ function exportToPDF() {
     // Generate PDF content and save
     generatePDFContent().then(() => {
         // Simpan PDF
-        doc.save('Widhi_Dhana_Professional_CV.pdf');
+        doc.save('Widhi_Dhana_CV.pdf');
         
         // Kembalikan tombol ke state semula
         pdfBtn.innerHTML = originalBtnText;
@@ -2189,6 +2186,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 </body>
 </html>
+
 
 
 
