@@ -1,0 +1,2072 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Widhi Dhana Yulistyo - Sales Operations & Financial Analysis Specialist</title>
+    <meta name="description" content="Portfolio profesional Widhi Dhana Yulistyo, spesialis Sales Operations & Financial Analysis dengan pengalaman dalam manajemen inventaris dan rekonsiliasi keuangan multi-channel.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+    <style>
+        :root {
+            --primary: #1D63FF;
+            --primary-light: #4d8aff;
+            --primary-dark: #0135a7;
+            --secondary: #FF6B35;
+            --secondary-light: #ff8c61;
+            --light: #f8f9fa;
+            --dark: #222831;
+            --dark-light: #393e46;
+            --gray: #6c757d;
+            --light-gray: #eaeaea;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --gradient-primary: linear-gradient(135deg, #1D63FF 0%, #4d8aff 100%);
+            --gradient-secondary: linear-gradient(135deg, #FF6B35 0%, #ff8c61 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Inter', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9fafc;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 5px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            transition: var(--transition);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--secondary);
+            border-radius: 50%;
+            bottom: 5px;
+            right: -10px;
+        }
+        
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+            font-size: 1rem;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+            border-radius: 3px;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        nav a.active {
+            color: var(--primary);
+        }
+        
+        nav a.active::after {
+            width: 100%;
+        }
+        
+        .language-switcher {
+            display: flex;
+            gap: 8px;
+            margin-left: 20px;
+        }
+        
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .lang-btn:hover:not(.active) {
+            background: rgba(29, 99, 255, 0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            z-index: 1001;
+            transition: var(--transition);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e3e9ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(29, 99, 255, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
+            top: -150px;
+            right: -150px;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(29, 99, 255, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%);
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .profile-img-container {
+            position: relative;
+            width: 320px;
+            height: 320px;
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 12px solid white;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .profile-img-container::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            top: 20px;
+            left: 20px;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-bottom: 25px;
+            padding-left: 18px;
+            border-left: 5px solid var(--secondary);
+            position: relative;
+        }
+        
+        .tagline::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--secondary);
+            border-radius: 50%;
+            left: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--dark-light);
+            max-width: 600px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(29, 99, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-secondary);
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            left: 0;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(29, 99, 255, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-left: 15px;
+        }
+        
+        .btn-outline::before {
+            background: var(--gradient-primary);
+        }
+        
+        .btn-outline:hover {
+            color: white;
+            border-color: transparent;
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--dark);
+            display: inline-block;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title h2::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: rgba(29, 99, 255, 0.05);
+            border-radius: 50%;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 5px;
+            background: var(--gradient-secondary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 25px auto 0;
+            font-size: 1.1rem;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .about-text {
+            flex: 1;
+            text-align: justify;
+            text-indent: 10px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .about-text::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+            top: 0;
+            left: 0;
+        }
+        
+        .about-stats {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        
+        .stat-box {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            top: 0;
+            left: 0;
+            transition: var(--transition);
+            z-index: 0;
+        }
+        
+        .stat-box:hover::before {
+            opacity: 0.05;
+        }
+        
+        .stat-box i {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stat-box h3 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Skills Section */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            padding: 35px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            top: 0;
+            left: 0;
+            transition: var(--transition);
+            z-index: 0;
+        }
+        
+        .tool-card:hover::before {
+            opacity: 0.05;
+        }
+        
+        .tool-icon {
+            width: 90px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #f0f5ff 0%, #e3e9ff 100%);
+            border-radius: 50%;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+        
+        .tool-card:hover .tool-icon {
+            background: var(--gradient-primary);
+            transform: scale(1.1);
+        }
+        
+        .tool-icon i {
+            font-size: 2.8rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transition: var(--transition);
+        }
+        
+        .tool-card:hover .tool-icon i {
+            color: white;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+        }
+        
+        .tool-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-size: 1.4rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .project-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+        
+        .project-content {
+            padding: 30px;
+            position: relative;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-content h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-size: 1.5rem;
+        }
+        
+        .project-content p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .project-btn {
+            margin-top: auto;
+        }
+        
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 5px;
+            background: var(--gradient-primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            padding: 20px 0;
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+        }
+        
+        .timeline-content {
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+            width: calc(50% - 50px);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            top: 20px;
+            transform: rotate(45deg);
+            box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -10px;
+            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -10px;
+            right: auto;
+            box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px rgba(29, 99, 255, 0.2);
+            z-index: 1;
+        }
+        
+        .timeline-date {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: block;
+            font-size: 1rem;
+        }
+        
+        .timeline-company {
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: block;
+            font-size: 1.1rem;
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-size: 1.3rem;
+        }
+        
+        .timeline-content p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .timeline-content ul {
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        
+        .timeline-content li {
+            margin-bottom: 8px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .timeline-content li::before {
+            content: '▸';
+            color: var(--primary);
+            position: absolute;
+            left: -15px;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 60px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-form {
+            flex: 1;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            transition: var(--transition);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .contact-item:hover {
+            background: #f8f9ff;
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f0f5ff 0%, #e3e9ff 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--primary);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover .contact-icon {
+            background: var(--gradient-primary);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .contact-item h4 {
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .contact-item a, .contact-item p {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover a {
+            color: var(--primary);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #eaeaea;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: #fafafa;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(29, 99, 255, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+            top: 0;
+            left: 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.3rem;
+            border-radius: 50%;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: var(--gradient-secondary);
+        }
+        
+        /* ========== MOBILE RESPONSIVE STYLES ========== */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 95%;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                gap: 50px;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+                gap: 50px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Header Mobile */
+            .header-container {
+                padding: 15px 0;
+            }
+            
+            nav {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                z-index: 1000;
+            }
+            
+            nav.active {
+                display: flex;
+            }
+            
+            nav a {
+                font-size: 1.3rem;
+                padding: 10px 0;
+            }
+            
+            .language-switcher {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            /* Hero Mobile */
+            .hero {
+                padding: 140px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+                margin-bottom: 20px;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+                margin-bottom: 20px;
+                padding-left: 15px;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 25px;
+                text-align: justify;
+            }
+            
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 0;
+            }
+            
+            .profile-img-container {
+                width: 280px;
+                height: 280px;
+            }
+            
+            /* Section Titles Mobile */
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title p {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+            
+            /* About Mobile */
+            .about-text {
+                padding: 30px 25px;
+                text-indent: 0;
+                text-align: left;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .stat-box {
+                padding: 25px 20px;
+            }
+            
+            .stat-box h3 {
+                font-size: 2.2rem;
+            }
+            
+            /* Skills Mobile */
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .tool-card {
+                padding: 30px 25px;
+            }
+            
+            .tool-icon {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 20px;
+            }
+            
+            .tool-icon i {
+                font-size: 2.5rem;
+            }
+            
+            /* Projects Mobile */
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .project-card {
+                border-radius: 15px;
+            }
+            
+            .project-img {
+                height: 200px;
+            }
+            
+            .project-content {
+                padding: 25px;
+            }
+            
+            .project-content h3 {
+                font-size: 1.3rem;
+            }
+            
+            /* Experience Timeline Mobile */
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                padding: 20px 0 20px 60px;
+                justify-content: flex-start !important;
+            }
+            
+            .timeline-content {
+                width: 100%;
+                margin: 0 !important;
+                padding: 25px;
+            }
+            
+            .timeline-content::before {
+                display: none;
+            }
+            
+            .timeline-dot {
+                left: 21px;
+                top: 25px;
+                transform: none;
+            }
+            
+            .timeline-company {
+                font-size: 1rem;
+            }
+            
+            .timeline-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .timeline-content ul {
+                padding-left: 15px;
+            }
+            
+            /* Contact Mobile */
+            .contact-info,
+            .contact-form {
+                padding: 30px 25px;
+                border-radius: 15px;
+            }
+            
+            .contact-item {
+                margin-bottom: 25px;
+                padding: 12px;
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+                width: 55px;
+                height: 55px;
+            }
+            
+            .form-group input,
+            .form-group textarea {
+                padding: 14px 18px;
+            }
+            
+            /* Footer Mobile */
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .social-links a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+            
+            .copyright {
+                font-size: 0.9rem;
+                padding-top: 25px;
+            }
+            
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            /* Extra Small Devices */
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .profile-img-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .about-text,
+            .contact-info,
+            .contact-form {
+                padding: 25px 20px;
+            }
+            
+            .stat-box {
+                padding: 20px 15px;
+            }
+            
+            .stat-box h3 {
+                font-size: 2rem;
+            }
+            
+            .tool-card {
+                padding: 25px 20px;
+            }
+            
+            .project-img {
+                height: 180px;
+            }
+            
+            .project-content {
+                padding: 20px;
+            }
+            
+            .timeline-item {
+                padding-left: 50px;
+            }
+            
+            .timeline-dot {
+                left: 18px;
+                width: 18px;
+                height: 18px;
+            }
+            
+            .timeline-content {
+                padding: 20px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.95rem;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            /* Very Small Devices */
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .profile-img-container {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .profile-img {
+                border-width: 8px;
+            }
+            
+            .stat-box h3 {
+                font-size: 1.8rem;
+            }
+            
+            .tool-icon {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .tool-icon i {
+                font-size: 2rem;
+            }
+            
+            .project-img {
+                height: 160px;
+            }
+            
+            .timeline-content ul li {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+            
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* Orientation-specific adjustments */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                padding: 120px 0 60px;
+            }
+            
+            .hero-content {
+                flex-direction: row;
+                gap: 30px;
+            }
+            
+            .hero-text {
+                text-align: left;
+            }
+            
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+            
+            .profile-img-container {
+                width: 200px;
+                height: 200px;
+            }
+            
+            nav {
+                gap: 20px;
+            }
+            
+            nav a {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Fix for iOS Safari */
+        @supports (-webkit-touch-callout: none) {
+            .hero {
+                padding-top: 120px;
+                min-height: 100vh;
+            }
+            
+            nav {
+                height: -webkit-fill-available;
+            }
+        }
+        
+        /* Fix for Android Chrome */
+        @media screen and (-webkit-min-device-pixel-ratio: 0) and (max-width: 768px) {
+            .hero {
+                min-height: calc(100vh - 60px);
+            }
+        }
+        
+        /* Prevent text size adjustment on mobile */
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- Header & Navigation -->
+    <header id="mainHeader">
+        <div class="container header-container">
+            <a href="#" class="logo">Widhi<span>Dhana</span></a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
+                <a href="#home" class="active">Beranda</a>
+                <a href="#about">Tentang</a>
+                <a href="#skills">Keahlian</a>
+                <a href="#projects">Proyek</a>
+                <a href="#experience">Pengalaman</a>
+                <a href="#contact">Kontak</a>
+            </nav>
+            <div class="language-switcher">
+                <a href="en_cv_v3.html" class="lang-btn">EN</a>
+                <button class="lang-btn active">ID</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Widhi Dhana Yulistyo</h1>
+                <p class="tagline">Keuangan & Operasional Penjualan</p>
+                <p>Lulusan SMK dengan latar belakang Akuntansi dan saat ini sedang menempuh pendidikan Sarjana Manajemen. Memiliki ketertarikan di bidang keuangan dan administrasi. Berpengalaman selama 3 tahun di divisi Finance sebagai Admin, serta terbiasa mengoperasikan Microsoft Excel, software Accurate, dan platform marketplace. Memiliki kemampuan dalam penginputan, pengolahan, dan pelaporan data, analisis data, serta pelacakan inventaris.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn">
+                        <i class="fas fa-paper-plane"></i> Kontak Saya
+                    </a>
+                    <button onclick="exportToPDF()" class="btn btn-outline" id="exportPDFBtn">
+                        <i class="fas fa-file-pdf"></i> Unduh CV
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-img-container">
+                    <img src="2profil.png" class="profile-img" alt="Widhi Dhana Yulistyo - Professional Photo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tentang Saya</h2>
+                <p>Profesional yang teliti dengan pengalaman di bidang keuangan dan operasional penjualan, manajemen inventaris, serta analisis data</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Saya merupakan profesional yang teliti dengan pengalaman di bidang keuangan dan operasional penjualan, manajemen inventaris, serta rekonsiliasi keuangan pada berbagai kanal penjualan, termasuk e-commerce dan penjualan offline.</p>
+                    <p>Saya terbiasa mendukung proses analisis data, pelaporan, dan operasional, serta bekerja sama dengan berbagai tim untuk meningkatkan efisiensi alur kerja dan akurasi data.</p>
+                    <p>Saya memiliki pengalaman dalam menggunakan berbagai alat analisis dan perangkat lunak operasional untuk mendukung proses kerja serta meningkatkan kualitas pelaporan, sehingga membantu pengambilan keputusan bisnis yang lebih tepat.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>15%</h3>
+                        <p>Penurunan Kesalahan Pelaporan</p>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>4+</h3>
+                        <p>Platforms E-commerce yang Dikelola</p>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>3+</h3>
+                        <p>Tahun Pengalaman</p>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>100%</h3>
+                        <p>Komitmen Akurasi Data</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="tools">
+        <div class="container">
+            <div class="section-title">
+                <h2>Keahlian</h2>
+                <p>Teknologi dan platform yang digunakan untuk mengoptimalkan operasional dan mendukung kinerja bisnis</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <h3>Microsoft Office</h3>
+                    <p>Penggunaan Microsoft Excel tingkat lanjut (rumus kompleks, PivotTable, XLOOKUP, Power Query), serta penyusunan dokumen di Word dan pembuatan presentasi di PowerPoint.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h3>Google Workspace</h3>
+                    <p>Pengolahan dan pelaporan data menggunakan Google Sheets, pengelolaan dokumen kolaboratif dengan Google Docs, serta pembuatan presentasi melalui Google Slides.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Accurate Online</h3>
+                    <p>Dukungan pembukuan, pengelolaan invoice, pelacakan inventaris, dan pelaporan keuangan untuk kebutuhan operasional harian.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Analisis Data</h3>
+                    <p>Analisis data penjualan, identifikasi tren, pemantauan kinerja, serta penyusunan laporan untuk mendukung pengambilan keputusan bisnis.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <h3>Manajemen Inventaris</h3>
+                    <p>Pelacakan stok di berbagai lokasi, pemantauan alur inventaris, dan pengendalian tingkat persediaan untuk meningkatkan efisiensi operasional.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Manajemen Data</h3>
+                    <p>Penginputan data, validasi data, pemeliharaan basis data, pengelolaan informasi, serta pengendalian kualitas data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Proyek</h2>
+                <p>Pilihan proyek yang mencerminkan pengalaman di bidang operasional penjualan dan analisis data</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="Screenshot 2026-01-29 004912.png" alt="Sales Performance Dashboard" class="project-img">
+                    <div class="project-content">
+                        <h3>Dashboard Kinerja Penjualan</h3>
+                        <p>Mengembangkan dashboard penjualan komprehensif untuk memantau kinerja multi-channel dan mendukung pengambilan keputusan berbasis data. Fitur meliputi visualisasi interaktif, pembaruan data secara real-time, serta analisis kinerja.</p>
+                        <a href="https://yjpg4915x1t4.jp.larksuite.com/base/XPDcbNntQaHUPks7QgdjdBeFpSh?from=from_copylink" target="_blank" rel="noopener noreferrer" class="btn project-btn">
+                            <i class="fas fa-external-link-alt"></i> Lihat Dashboard
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="Screenshot 2026-01-29 005430.png" alt="E-commerce Platform" class="project-img">
+                    <div class="project-content">
+                        <h3>Platform E-Commerce</h3>
+                        <p>Merancang dan mengimplementasikan toko online dengan sistem manajemen inventaris dan pelacakan keuangan terintegrasi. Meningkatkan efisiensi operasional melalui pelaporan dan analisis data otomatis.</p>
+                        <a href="https://toko-widhi.page.gd/index.php" target="_blank" rel="noopener noreferrer" class="btn project-btn">
+                            <i class="fas fa-external-link-alt"></i> Lihat Platform
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pengalaman Kerja</h2>
+                <p>Perjalanan Karier dan Pengembangan Profesional</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
+                            <img src="logo ipg.jpg" style="width: 70px;border-radius: 10px; margin-bottom: 15px;" alt="IPG Logo">
+                        </a>
+                        <span class="timeline-date">January 2023 - Saat Ini</span>
+                        <span class="timeline-company">PT Indonesia Premium Goods</span>
+                        <h3>Sales & Inventory Admin</h3>
+                        <ul>
+                            <li>Menyusun dan merekonsiliasi laporan penjualan sebagai dasar pengambilan keputusan bisnis.</li>
+                            <li>Menganalisis data penjualan untuk identifikasi tren, peramalan, dan strategi promosi.</li>
+                            <li>Mengelola database penjualan, integrasi data antar-sistem, serta keuangan marketplace.</li>
+                            <li>Mengontrol persediaan (barang dagang, bahan baku & pembantu), termasuk pencatatan, monitoring stok, dan stock opname.</li>
+                            <li>Menginvestigasi selisih stok serta menyusun laporan persediaan untuk manajemen.</li>
+                            <li>Berkoordinasi dengan tim internal lainnya seperti finance, purchasing, dan product team terkait kebutuhan data (untuk strategi dan promosi).</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
+                            <img src="logo ipg.jpg" style="width: 70px;border-radius: 10px; margin-bottom: 15px;" alt="IPG Logo">
+                        </a>
+                        <span class="timeline-date">Maret - April 2024</span>
+                        <span class="timeline-company">PT Indonesia Premium Goods</span>
+                        <h3>Accounting</h3>
+                        <ul>
+                            <li>Memverifikasi kelengkapan dokumen yang akan diproses pembayaran.</li>
+                            <li>Memproses pengajuan pembayaran yang masuk dari semua divisi ke finance.</li>
+                            <li>Menginput jurnal transaksi (Pembayaran, Penerimaan, Penjualan, Pembelian, dan Penyesuaian).</li>
+                            <li>Membuat laporan keuangan (neraca & laba rugi).</li>
+                            <li>Mengarsipkan dokumen transaksi.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
+                            <img src="logo ipg.jpg" style="width: 70px;border-radius: 10px; margin-bottom: 15px;" alt="IPG Logo">
+                        </a>
+                        <span class="timeline-date">January 2022 - Januari 2023</span>
+                        <span class="timeline-company">PT Indonesia Premium Goods</span>
+                        <h3>Housekeeper / Office Boy</h3>
+                        <ul>
+                            <li>Mendukung operasional harian dengan menjaga kebersihan dan kerapihan area kantor serta gudang.</li>
+                            <li>Menjalankan jadwal kebersihan rutin di berbagai area kerja.</li>
+                            <li>Memantau dan mengelola ketersediaan perlengkapan kebersihan.</li>
+                            <li>Memastikan penerapan standar kebersihan dan keselamatan kerja.</li>
+                            <li>Berkoordinasi dengan tim fasilitas dan administrasi untuk kebutuhan operasional.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <a href="https://www.instagram.com/pspayamblenger/" target="_blank">
+                            <img src="logo psp ayam blenger.jpg" style="width: 70px;border-radius: 10px; margin-bottom: 15px;" alt="PSP Ayam Blenger Logo">
+                        </a>
+                        <span class="timeline-date">November 2021 - Januari 2022</span>
+                        <span class="timeline-company">PSP Ayam Blenger</span>
+                        <h3>Kitchen Helper / Waitress</h3>
+                        <ul>
+                            <li>Mendukung operasional restoran baik di area dapur maupun pelayanan pelanggan.</li>
+                            <li>Menyiapkan bahan makanan, membantu proses memasak, serta menjaga kebersihan dapur sesuai standar higienitas.</li>
+                            <li>Melayani pelanggan dine-in dan take-away, mencatat pesanan secara akurat, serta menyajikan makanan dengan efisien.</li>
+                            <li>Menangani pertanyaan dan keluhan pelanggan dengan sopan.</li>
+                            <li>Menjaga kebersihan dan kerapihan area kerja serta mengelola persediaan operasional.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <a href="https://autologistik.co.id/" target="_blank">
+                            <img src="logo auto logistik.jpg" style="width: 70px;border-radius: 10px; margin-bottom: 15px;" alt="Auto Logistik Logo">
+                        </a>
+                        <span class="timeline-date">Januari 2020 - April 2020</span>
+                        <span class="timeline-company">PT Andalan Utama Transportasi Otomotif</span>
+                        <h3>Internship (Finance & Logistics Support)</h3>
+                        <ul>
+                            <li>Mendukung tim Finance dan Logistik dalam kegiatan operasional harian.</li>
+                            <li>Membantu penyusunan dan pengelolaan laporan keuangan.</li>
+                            <li>Memperbarui dan menjaga akurasi data pengiriman/logistik.</li>
+                            <li>Mendukung koordinasi antara fungsi Finance dan Logistik.</li>
+                            <li>Mengembangkan kemampuan analisis data, ketelitian, dan kerja tim.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Kontak Saya</h2>
+                <p>Hubungi saya untuk berdiskusi mengenai peluang strategis dan potensi kolaborasi</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Informasi Kontak</h3>
+                    <p>Tersedia untuk peluang kerja, kolaborasi profesional, dan diskusi strategis.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Alamat Email</h4>
+                            <a href="mailto:widhi.dhana80@gmail.com">widhi.dhana80@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Nomor Telepon</h4>
+                            <a href="https://wa.me/6285894078040" rel="noopener noreferrer">+62 858 9407 8040</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div>
+                            <h4>LinkedIn</h4>
+                            <a href="https://www.linkedin.com/in/widhi-dhana/" target="_blank" rel="noopener noreferrer">Widhi Dhana Yulistyo</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div>
+                            <h4>Instagram</h4>
+                            <a href="https://www.instagram.com/dhana.8/" target="_blank" rel="noopener noreferrer">dhana.8</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Lokasi</h4>
+                            <p>Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Kirim Pesan</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" placeholder="Masukan nama lengkap anda" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Alamat Email</label>
+                            <input type="email" id="email" placeholder="Masukan alamat email anda" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subjek</label>
+                            <input type="text" id="subject" placeholder="Subjek Pesan" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Pesan Anda</label>
+                            <textarea id="message" placeholder="Silakan tulis pesan Anda" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">
+                            <i class="fas fa-paper-plane"></i> Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Widhi Dhana Yulistyo</h3>
+                    <p>Keuangan & Operasional Penjualan</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/widhi-dhana/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/dhana.8/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:widhi.dhana80@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://wa.me/6285894078040" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="currentYear"></span> Widhi Dhana Yulistyo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        const mainHeader = document.getElementById('mainHeader');
+        const navLinks = document.querySelectorAll('nav a');
+        const backToTop = document.getElementById('backToTop');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden';
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                mainHeader.classList.add('scrolled');
+                backToTop.classList.add('visible');
+            } else {
+                mainHeader.classList.remove('scrolled');
+                backToTop.classList.remove('visible');
+            }
+            
+            // Active navigation link
+            const scrollPosition = window.scrollY + 100;
+            
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        navLinks.forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        document.body.style.overflow = 'auto';
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Back to top
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Create a success message element
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            // Simulate sending (in real app, use AJAX)
+            setTimeout(() => {
+                // Success notification
+                const successMessage = document.createElement('div');
+                successMessage.innerHTML = `
+                    <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 10px; margin-top: 20px; border: 1px solid #c3e6cb;">
+                        <i class="fas fa-check-circle"></i> Thank you ${name}! Your message has been sent successfully. I will respond to ${email} promptly.
+                    </div>
+                `;
+                contactForm.appendChild(successMessage);
+                
+                // Reset form
+                contactForm.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Remove success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.remove();
+                }, 5000);
+            }, 1500);
+        });
+        
+        // Timeline animation
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+        
+        timelineItems.forEach(item => {
+            timelineObserver.observe(item);
+        });
+        
+        // Add animation on scroll for other elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.tool-card, .project-card, .stat-box, .contact-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Initialize with header scroll
+        window.dispatchEvent(new Event('scroll'));
+        
+        // PDF export function (simplified version for mobile compatibility)
+        function exportToPDF() {
+            const pdfBtn = document.getElementById('exportPDFBtn');
+            const originalBtnText = pdfBtn.innerHTML;
+            pdfBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
+            pdfBtn.disabled = true;
+            
+            // Simple alert for mobile devices
+            setTimeout(() => {
+                alert('PDF export functionality works best on desktop devices. For mobile, please use the desktop version or contact directly.');
+                pdfBtn.innerHTML = originalBtnText;
+                pdfBtn.disabled = false;
+            }, 1000);
+        }
+        
+        // Touch event handling for better mobile UX
+        document.addEventListener('touchstart', function() {}, {passive: true});
+        
+        // Prevent zoom on double-tap for mobile
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
