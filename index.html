@@ -1777,7 +1777,6 @@ kebutuhan data (untuk strategi dan promosi).</li>
         // Initialize with header scroll
         window.dispatchEvent(new Event('scroll'));
 
-// PDF Export Function - Improved Layout
 function exportToPDF() {
     // Sembunyikan tombol PDF saat proses export
     const pdfBtn = document.getElementById('exportPDFBtn');
@@ -1795,17 +1794,23 @@ function exportToPDF() {
     
     // Mengatur properti dokumen
     const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
     const margin = 20;
     const contentWidth = pageWidth - (margin * 2);
     let yPos = margin;
     
     // Fungsi untuk menambahkan halaman baru jika diperlukan
     function checkPageHeight(y, addHeight = 10) {
-        if (y >= doc.internal.pageSize.getHeight() - margin) {
+        if (y >= pageHeight - margin) {
             doc.addPage();
             return margin;
         }
         return y;
+    }
+    
+    // Fungsi untuk memeriksa apakah ada cukup ruang untuk konten tertentu
+    function hasSpaceFor(heightNeeded) {
+        return yPos + heightNeeded < pageHeight - 30; // 30 adalah ruang untuk footer
     }
     
     // Fungsi untuk menambahkan garis pemisah
@@ -1825,7 +1830,6 @@ function exportToPDF() {
     // Fungsi untuk menambahkan heading dengan styling
     function addHeading(text, size = 18, isSection = false) {
         yPos = checkPageHeight(yPos, size + 5);
-        
         
         doc.setFontSize(size);
         doc.setFont('helvetica', 'bold');
@@ -1886,40 +1890,37 @@ function exportToPDF() {
         return yPos;
     }
     
-    // Fungsi untuk menambahkan gambar profil
-    function addProfileImage(imgElement) {
-        return new Promise((resolve, reject) => {
-            try {
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                const img = imgElement;
-                
-                canvas.width = img.width;
-                canvas.height = img.height;
-                ctx.drawImage(img, 0, 0, img.width, img.height);
-                
-                const imgData = canvas.toDataURL('image/jpeg', 0.9);
-                
-                // Posisi gambar di pojok kanan atas
-                const imgWidth = 40;
-                const imgHeight = 40;
-                const imgX = pageWidth - margin - imgWidth;
-                const imgY = margin + 5;
-                
-                // Tambahkan border pada gambar
-                doc.setDrawColor(29, 99, 255);
-                doc.setLineWidth(0.5);
-                doc.roundedRect(imgX - 2, imgY - 2, imgWidth + 4, imgHeight + 4, 5, 5, 'S');
-                
-                // Tambahkan gambar ke PDF
-                doc.addImage(imgData, 'PNG', imgX, imgY, imgWidth, imgHeight);
-                
-                resolve();
-            } catch (error) {
-                console.error('Error adding image to PDF:', error);
-                reject(error);
+    // Fungsi untuk menambahkan footer ke semua halaman
+    function addFooterToAllPages() {
+        const totalPages = doc.internal.getNumberOfPages();
+        
+        for (let i = 1; i <= totalPages; i++) {
+            doc.setPage(i);
+            
+            // Simpan posisi Y saat ini
+            const currentY = yPos;
+            
+            // Pindah ke posisi footer
+            const footerY = pageHeight - 20;
+            
+            // Footer line
+            doc.setDrawColor(29, 99, 255);
+            doc.setLineWidth(0.5);
+            doc.line(margin, footerY, pageWidth - margin, footerY);
+            
+            // Footer text
+            doc.setFontSize(9);
+            doc.setTextColor(100, 100, 100);
+            doc.text('CV - Widhi Dhana Yulistyo', margin, pageHeight - 15);
+            doc.text(`Page ${i} of ${totalPages}`, pageWidth - margin, pageHeight - 15, { align: 'right' });
+            doc.setFontSize(8);
+            doc.text('Last updated: ' + new Date().toLocaleDateString(), pageWidth / 2, pageHeight - 10, { align: 'center' });
+            
+            // Kembalikan ke posisi semula (untuk halaman aktif)
+            if (i === totalPages) {
+                yPos = currentY;
             }
-        });
+        }
     }
     
     // Main function to generate PDF content
@@ -1928,9 +1929,8 @@ function exportToPDF() {
             // === HEADER ===
             doc.setFillColor(29, 99, 255);
             doc.rect(0, 0, pageWidth, 40, 'F');
-
-            // === PROFILE IMAGE ===
-
+            
+            // Nama dan title
             doc.setTextColor(255, 255, 255);
             doc.setFontSize(22);
             doc.setFont('helvetica', 'bold');
@@ -1940,10 +1940,8 @@ function exportToPDF() {
             doc.setFont('helvetica', 'normal');
             doc.text('Sales Operations & Financial Analysis Specialist', pageWidth / 2, 25, { align: 'center' });
             
-
             // Reset yPos setelah header
             yPos = 50;
-            
             
             // === PROFESSIONAL SUMMARY ===
             addHeading('Tentang Saya', 16, true);
@@ -1956,50 +1954,55 @@ function exportToPDF() {
                 });
             }
             
-            addSpacing(1.5);
+            addSpacing(8);
             
             // === KEY ACHIEVEMENTS ===
             addHeading('Pencapaian Utama', 16, true);
             
             const achievements = [
-                  'Mengurangi kesalahan laporan bulanan sebesar 15% melalui optimalisasi proses',
-                  'Mengelola data penjualan dari lebih dari 4 platform e-commerce secara bersamaan',
-                  'Mengawasi dan mengelola inventaris di beberapa lokasi gudang',
-                  'Berkontribusi dalam peningkatan akurasi data dan efisiensi pelaporan'
+                'Mengurangi kesalahan laporan bulanan sebesar 15% melalui optimalisasi proses',
+                'Mengelola data penjualan dari lebih dari 4 platform e-commerce secara bersamaan',
+                'Mengawasi dan mengelola inventaris di beberapa lokasi gudang',
+                'Berkontribusi dalam peningkatan akurasi data dan efisiensi pelaporan'
             ];
             
             achievements.forEach(achievement => {
                 addBulletPoint(achievement);
             });
             
-            addSpacing(1.5);
+            addSpacing(8);
             
             // === TECHNICAL SKILLS ===
             addHeading('Keahlian', 16, true);
             
             const skillCategories = [
                 {
-                  category: 'Perangkat Lunak',
-                  skills: 'Microsoft Office (Excel Tingkat Lanjut), Google Workspace, Accurate Online'
+                    category: 'Perangkat Lunak',
+                    skills: 'Microsoft Office (Excel Tingkat Lanjut), Google Workspace, Accurate Online'
                 },
                 {
-                  category: 'Analisis Data',
-                  skills: 'Analisis data penjualan, identifikasi tren, pelaporan kinerja'
+                    category: 'Analisis Data',
+                    skills: 'Analisis data penjualan, identifikasi tren, pelaporan kinerja'
                 },
                 {
-                  category: 'Manajemen Inventaris',
-                  skills: 'Pencatatan stok, pemantauan alur inventaris, pengelolaan multi-lokasi'
+                    category: 'Manajemen Inventaris',
+                    skills: 'Pencatatan stok, pemantauan alur inventaris, pengelolaan multi-lokasi'
                 },
-
             ];
             
             skillCategories.forEach(category => {
+                // Periksa apakah ada cukup ruang untuk kategori berikutnya
+                if (!hasSpaceFor(20)) {
+                    doc.addPage();
+                    yPos = margin;
+                }
+                
                 addParagraph(category.category + ':', { bold: true, fontSize: 11 });
                 addParagraph(category.skills, { indent: 5, fontSize: 10 });
-                addSpacing(1.5);
+                addSpacing(5);
             });
             
-            addSpacing(1.5);
+            addSpacing(10);
             
             // === PROFESSIONAL EXPERIENCE ===
             addHeading('Pengalaman Kerja', 16, true);
@@ -2013,6 +2016,13 @@ function exportToPDF() {
                 const listItems = item.querySelectorAll('li');
                 
                 if (date && company && title) {
+                    // Periksa apakah ada cukup ruang untuk pengalaman berikutnya
+                    // Perkiraan tinggi: 5 baris * 5mm = 25mm
+                    if (!hasSpaceFor(60)) {
+                        doc.addPage();
+                        yPos = margin;
+                    }
+                    
                     // Tanggal dan perusahaan
                     addParagraph(`${date.textContent} | ${company.textContent}`, {
                         bold: true,
@@ -2041,9 +2051,9 @@ function exportToPDF() {
                     
                     // Tambahkan spasi antar pengalaman (kecuali untuk yang terakhir)
                     if (index < timelineItems.length - 1) {
-                        addSpacing(1.5);
+                        addSpacing(8);
                         addDivider();
-                        addSpacing(1.5);
+                        addSpacing(8);
                     }
                 }
             });
@@ -2053,9 +2063,9 @@ function exportToPDF() {
             // === EDUCATION ===
             addHeading('Pendidikan', 16, true);
             
-            addParagraph('SMK (Sekolah Menengah Kejuruan)', { bold: true, fontSize: 11,});
+            addParagraph('SMK (Sekolah Menengah Kejuruan)', { bold: true, fontSize: 11 });
             addParagraph('Akuntansi', { indent: 5, fontSize: 10 });
-            addSpacing(5);
+            addSpacing(8);
             
             addParagraph('Universitas Bina Sarana Informatika', { bold: true, fontSize: 11 });
             addParagraph('S1 Manajemen (Sedang Menempuh)', { indent: 5, fontSize: 10 });
@@ -2063,7 +2073,7 @@ function exportToPDF() {
             addSpacing(15);
             
             // === CONTACT INFO ===
-            addHeading('Informasi kontak', 16, true);
+            addHeading('Informasi Kontak', 16, true);
             
             // Email
             addParagraph('Email: widhi.dhana80@gmail.com', { fontSize: 10 });
@@ -2077,36 +2087,8 @@ function exportToPDF() {
             // Instagram
             addParagraph('Instagram: @dhana.8', { fontSize: 10 });
             
-            addSpacing(10);
-
-            // === FOOTER ===
-                // Fungsi untuk memeriksa apakah ada cukup ruang untuk konten
-                function checkSpaceForContent(requiredHeight) {
-                    return yPos + requiredHeight < doc.internal.pageSize.getHeight() - margin;
-                }
-                
-                // === FOOTER === 
-                const footerHeight = 25; // Tinggi total footer (termasuk garis dan teks)
-                const currentY = yPos; // Posisi Y saat ini
-                
-                // Jika tidak ada cukup ruang untuk footer, buat halaman baru
-                if (!checkSpaceForFooter(footerHeight)) {
-                    doc.addPage();
-                    yPos = margin;
-                }
-                // Footer line
-                doc.setDrawColor(29, 99, 255);
-                doc.setLineWidth(0.5);
-                doc.line(margin, doc.internal.pageSize.getHeight() - 20, pageWidth - margin, doc.internal.pageSize.getHeight() - 20);
-                
-                // Footer text
-                doc.setFontSize(9);
-                doc.setTextColor(100, 100, 100);
-                doc.text('CV - Widhi Dhana Yulistyo', margin, doc.internal.pageSize.getHeight() - 15);
-                doc.text(`Page ${i} of ${totalPages}`, pageWidth - margin, doc.internal.pageSize.getHeight() - 15, { align: 'right' });
-                doc.setFontSize(8);
-                doc.text('Last updated: ' + new Date().toLocaleDateString(), pageWidth / 2, doc.internal.pageSize.getHeight() - 10, { align: 'center' });
-            }
+            // Tambahkan footer ke semua halaman
+            addFooterToAllPages();
             
         } catch (error) {
             console.error('Error generating PDF:', error);
@@ -2188,14 +2170,10 @@ function exportToPDF() {
     }
 }
 
-// Tambahkan event listener untuk tombol PDF
-document.addEventListener('DOMContentLoaded', function() {
-    const pdfBtn = document.getElementById('exportPDFBtn');
-});
-
     </script>
 </body>
 </html>
+
 
 
 
