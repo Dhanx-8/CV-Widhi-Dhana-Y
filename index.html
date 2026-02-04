@@ -1286,7 +1286,7 @@
                         <i class="fas fa-chart-pie"></i>
                     </div>
                     <h3>Analisis Data</h3>
-                    <p>Analisis data penjualan, identifikasi tren, pemantauan kinerja, serta penyusunan laporan untuk mendukung pengambilan keputusan bisnis.</p>
+                    <p>Analisis data penjualan, identifikasi tren, pemantauan kinerja, pelacakan KPI, serta penyusunan laporan untuk mendukung pengambilan keputusan bisnis.</p>
                 </div>
                 <div class="tool-card">
                     <div class="tool-icon">
@@ -1938,7 +1938,7 @@ function exportToPDF() {
             
             doc.setFontSize(12);
             doc.setFont('helvetica', 'normal');
-            doc.text('Sales Operations & Financial Analysis Specialist', pageWidth / 2, 25, { align: 'center' });
+            doc.text('Keuangan & Operasional Penjualan', pageWidth / 2, 25, { align: 'center' });
             
             // Reset yPos setelah header
             yPos = 50;
@@ -1972,37 +1972,6 @@ function exportToPDF() {
             
             addSpacing(8);
             
-            // === TECHNICAL SKILLS ===
-            addHeading('Keahlian', 16, true);
-            
-            const skillCategories = [
-                {
-                    category: 'Perangkat Lunak',
-                    skills: 'Microsoft Office (Excel Tingkat Lanjut), Google Workspace, Accurate Online'
-                },
-                {
-                    category: 'Analisis Data',
-                    skills: 'Analisis data penjualan, identifikasi tren, pelaporan kinerja'
-                },
-                {
-                    category: 'Manajemen Inventaris',
-                    skills: 'Pencatatan stok, pemantauan alur inventaris, pengelolaan multi-lokasi'
-                },
-            ];
-            
-            skillCategories.forEach(category => {
-                // Periksa apakah ada cukup ruang untuk kategori berikutnya
-                if (!hasSpaceFor(20)) {
-                    doc.addPage();
-                    yPos = margin;
-                }
-                
-                addParagraph(category.category + ':', { bold: true, fontSize: 11 });
-                addParagraph(category.skills, { indent: 5, fontSize: 10 });
-                addSpacing(5);
-            });
-            
-            addSpacing(10);
             
             // === PROFESSIONAL EXPERIENCE ===
             addHeading('Pengalaman Kerja', 16, true);
@@ -2051,26 +2020,57 @@ function exportToPDF() {
                     
                     // Tambahkan spasi antar pengalaman (kecuali untuk yang terakhir)
                     if (index < timelineItems.length - 1) {
-                        addSpacing(8);
+                        addSpacing(3);
                         addDivider();
-                        addSpacing(8);
+                        addSpacing(3);
                     }
                 }
             });
             
             addSpacing(15);
+            // === TECHNICAL SKILLS ===
+            addHeading('Keahlian', 16, true);
+            
+            const skillCategories = [
+                {
+                    category: 'Perangkat Lunak',
+                    skills: 'Microsoft Office (Excel Tingkat Lanjut), Google Workspace, Accurate Online'
+                },
+                {
+                    category: 'Analisis Data',
+                    skills: 'Analisis data penjualan, identifikasi tren, pelaporan kinerja'
+                },
+                {
+                    category: 'Manajemen Inventaris',
+                    skills: 'Pencatatan stok, pemantauan alur inventaris, pengelolaan multi-lokasi'
+                },
+            ];
+            
+            skillCategories.forEach(category => {
+                // Periksa apakah ada cukup ruang untuk kategori berikutnya
+                if (!hasSpaceFor(5)) {
+                    doc.addPage();
+                    yPos = margin;
+                }
+                
+                addParagraph(category.category + ':', { bold: true, fontSize: 11 });
+                addParagraph(category.skills, { indent: 5, fontSize: 10 });
+                addSpacing(5);
+            });
+            
+            addSpacing(10);            
             
             // === EDUCATION ===
             addHeading('Pendidikan', 16, true);
             
             addParagraph('SMK (Sekolah Menengah Kejuruan)', { bold: true, fontSize: 11 });
             addParagraph('Akuntansi', { indent: 5, fontSize: 10 });
-            addSpacing(8);
+            addSpacing(5);
             
             addParagraph('Universitas Bina Sarana Informatika', { bold: true, fontSize: 11 });
             addParagraph('S1 Manajemen (Sedang Menempuh)', { indent: 5, fontSize: 10 });
             
-            addSpacing(15);
+            addSpacing(5);
             
             // === CONTACT INFO ===
             addHeading('Informasi Kontak', 16, true);
@@ -2169,13 +2169,9 @@ function exportToPDF() {
         }
     }
 }
-
     </script>
 </body>
 </html>
-
-
-
 
 
 
