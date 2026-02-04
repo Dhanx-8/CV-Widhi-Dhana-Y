@@ -1,0 +1,2173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Widhi Dhana Yulistyo - Sales Operations & Financial Analysis Specialist</title>
+    <meta name="description" content="Professional portfolio of Widhi Dhana Yulistyo, a Sales Operations & Financial Analysis specialist with experience in inventory management and multi-channel financial reconciliation.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+    <style>
+        :root {
+            --primary: #1D63FF;
+            --primary-light: #4d8aff;
+            --primary-dark: #0135a7;
+            --secondary: #FF6B35;
+            --secondary-light: #ff8c61;
+            --light: #f8f9fa;
+            --dark: #222831;
+            --dark-light: #393e46;
+            --gray: #6c757d;
+            --light-gray: #eaeaea;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --gradient-primary: linear-gradient(135deg, #1D63FF 0%, #4d8aff 100%);
+            --gradient-secondary: linear-gradient(135deg, #FF6B35 0%, #ff8c61 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Inter', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9fafc;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 5px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            transition: var(--transition);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--secondary);
+            border-radius: 50%;
+            bottom: 5px;
+            right: -10px;
+        }
+        
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+            font-size: 1rem;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+            border-radius: 3px;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        nav a.active {
+            color: var(--primary);
+        }
+        
+        nav a.active::after {
+            width: 100%;
+        }
+        
+        .language-switcher {
+            display: flex;
+            gap: 8px;
+            margin-left: 20px;
+        }
+        
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .lang-btn:hover:not(.active) {
+            background: rgba(29, 99, 255, 0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            z-index: 1001;
+            transition: var(--transition);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e3e9ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(29, 99, 255, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
+            top: -150px;
+            right: -150px;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(29, 99, 255, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%);
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .profile-img-container {
+            position: relative;
+            width: 320px;
+            height: 320px;
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 12px solid white;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .profile-img-container::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            top: 20px;
+            left: 20px;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-bottom: 25px;
+            padding-left: 18px;
+            border-left: 5px solid var(--secondary);
+            position: relative;
+        }
+        
+        .tagline::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--secondary);
+            border-radius: 50%;
+            left: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--dark-light);
+            max-width: 600px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(29, 99, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-secondary);
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            left: 0;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(29, 99, 255, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-left: 15px;
+        }
+        .btn-pdf {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-left: 0px;
+        }        
+        
+        .btn-outline::before {
+            background: var(--gradient-primary);
+        }
+        .btn-pdf::before {
+            background: var(--gradient-primary);
+        }        
+        .btn-pdf:hover {
+            color: white;
+            border-color: transparent;
+        }
+        
+        .btn-outline:hover {
+            color: white;
+            border-color: transparent;
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--dark);
+            display: inline-block;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title h2::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: rgba(29, 99, 255, 0.05);
+            border-radius: 50%;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 5px;
+            background: var(--gradient-secondary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 25px auto 0;
+            font-size: 1.1rem;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .about-text {
+            flex: 1;
+            text-align: justify;
+            text-indent: 10px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .about-text::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+            top: 0;
+            left: 0;
+        }
+        
+        .about-stats {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        
+        .stat-box {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            top: 0;
+            left: 0;
+            transition: var(--transition);
+            z-index: 0;
+        }
+        
+        .stat-box:hover::before {
+            opacity: 0.05;
+        }
+        
+        .stat-box i {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stat-box h3 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Skills Section */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            padding: 35px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            top: 0;
+            left: 0;
+            transition: var(--transition);
+            z-index: 0;
+        }
+        
+        .tool-card:hover::before {
+            opacity: 0.05;
+        }
+        
+        .tool-icon {
+            width: 90px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #f0f5ff 0%, #e3e9ff 100%);
+            border-radius: 50%;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+        
+        .tool-card:hover .tool-icon {
+            background: var(--gradient-primary);
+            transform: scale(1.1);
+        }
+        
+        .tool-icon i {
+            font-size: 2.8rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transition: var(--transition);
+        }
+        
+        .tool-card:hover .tool-icon i {
+            color: white;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+        }
+        
+        .tool-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-size: 1.4rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .project-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+        
+        .project-content {
+            padding: 30px;
+            position: relative;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-content h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-size: 1.5rem;
+        }
+        
+        .project-content p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .project-btn {
+            margin-top: auto;
+        }
+        
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0;
+            padding: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 5px;
+            background: var(--gradient-primary);
+            top: 0;
+            bottom: 0;
+            left: 5%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            padding: 20px 70px;
+            position: relative;
+            width: 180%;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            height:min-content;
+        }
+
+        .timeline-logo-stats{
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 10px;
+            margin-left: 25px;
+        }
+
+        .timeline-logo img {
+            width: 200px; /* atur sesuai kebutuhan */
+            height: auto;
+            display: grid;
+            border-radius: 20%;
+            grid-template-columns: repeat(2, 1fr);    
+            transform: translateY(0px);
+            transition: opacity 0.6s ease, transform 0.6s ease;                               
+        }
+        .timeline-logo img {
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover .timeline-logo img {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 0%;
+        }
+        
+        .timeline-content {
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+            flex: 1;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -10px;
+            right: auto;
+            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-dot {
+            position:relative;
+            left: -32px;            
+            width: 24px;
+            height: 24px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px rgba(29, 99, 255, 0.2);
+        }
+        
+        
+        .timeline-date {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: block;
+            font-size: 1rem;
+        }
+        
+        .timeline-company {
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: block;
+            font-size: 1.1rem;
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-size: 1.3rem;
+        }
+        
+        .timeline-content p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .timeline-content ul {
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        
+        .timeline-content li {
+            margin-bottom: 8px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .timeline-content li::before {
+            content: '▸';
+            color: var(--primary);
+            position: absolute;
+            left: -15px;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 60px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-form {
+            flex: 1;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            transition: var(--transition);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .contact-item:hover {
+            background: #f8f9ff;
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f0f5ff 0%, #e3e9ff 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--primary);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover .contact-icon {
+            background: var(--gradient-primary);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .contact-item h4 {
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .contact-item a, .contact-item p {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover a {
+            color: var(--primary);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #eaeaea;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: #fafafa;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(29, 99, 255, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+            top: 0;
+            left: 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.3rem;
+            border-radius: 50%;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: var(--gradient-secondary);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 95%;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                gap: 50px;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+                gap: 50px;
+            }
+            
+            .timeline::before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 30px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-content::before {
+                left: 20px;
+                right: auto;
+            }
+            
+            .timeline-dot {
+                left: 19px !important;
+                right: auto !important;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px 0;
+            }
+            
+            nav {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                z-index: 1000;
+            }
+            
+            nav.active {
+                display: flex;
+            }
+            
+            .language-switcher {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 140px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-logo {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .profile-img-container {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .about-text, .contact-info, .contact-form {
+                padding: 30px 20px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- Header & Navigation -->
+    <header id="mainHeader">
+        <div class="container header-container">
+            <a href="#" class="logo">Widhi<span>Dhana</span></a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
+                <a href="#home" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </nav>
+                <div class="language-switcher">
+                    <a href="id_cv_v3.html" class="lang-btn">ID</a>
+                    <button class="lang-btn active">EN</button>
+                </div>            
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Widhi Dhana Yulistyo</h1>
+                <p class="tagline">Finance & Sales Operations</p>
+                <p>Vocational high school graduate with a background in Accounting and currently pursuing a Bachelor's degree in Management. Interested in finance and administration fields. Have 3 years of experience in the Finance division as an Admin, and proficient in using Microsoft Excel, Accurate software, and marketplace platforms. Skilled in data entry, processing and reporting, data analysis, and inventory tracking.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn">
+                        <i class="fas fa-paper-plane"></i> Contact Me
+                    </a>
+                    <button onclick="exportToPDF()" class="btn btn-outline" id="exportPDFBtn">
+                        <i class="fas fa-file-pdf"></i> Download CV 
+                    </button>                     
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-img-container">
+                    <img src="2profil.png" class="profile-img" alt="Widhi Dhana Yulistyo - Professional Photo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Detail-oriented professional with experience in finance and sales operations, inventory management, and data analysis</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I am a detail-oriented professional with experience in finance and sales operations, inventory management, and financial reconciliation across various sales channels, including e-commerce and offline sales.</p>
+                    <p>I am accustomed to supporting data analysis, reporting, and operational processes, as well as collaborating with various teams to improve workflow efficiency and data accuracy.</p>
+                    <p>I have experience using various analysis tools and operational software to support work processes and improve reporting quality, thereby helping to make better business decisions.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>15%</h3>
+                        <p>Reduction in Reporting Errors</p>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>4+</h3>
+                        <p>E-commerce Platforms Managed</p>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>3+</h3>
+                        <p>Years of Experience</p>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>100%</h3>
+                        <p>Commitment to Data Accuracy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="tools">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skills</h2>
+                <p>Technologies and platforms used to optimize operations and support business performance</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <h3>Microsoft Office</h3>
+                    <p>Advanced Microsoft Excel usage (complex formulas, PivotTables, XLOOKUP, Power Query), as well as document preparation in Word and presentation creation in PowerPoint.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h3>Google Workspace</h3>
+                    <p>Data processing and reporting using Google Sheets, collaborative document management with Google Docs, and presentation creation through Google Slides.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Accurate Online</h3>
+                    <p>Bookkeeping support, invoice management, inventory tracking, and financial reporting for daily operational needs.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Data Analysis</h3>
+                    <p>Sales data analysis, trend identification, performance monitoring, KPI tracking, and report preparation to support business decision-making.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <h3>Inventory Management</h3>
+                    <p>Stock tracking across multiple locations, inventory flow monitoring, and inventory level control to improve operational efficiency.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Data Management</h3>
+                    <p>Data entry, data validation, database maintenance, information management, and data quality control.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Projects</h2>
+                <p>Selection of projects reflecting experience in sales operations and data analysis</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="Screenshot 2026-01-29 004912.png" alt="Sales Performance Dashboard" class="project-img">
+                    <div class="project-content">
+                        <h3>Sales Performance Dashboard</h3>
+                        <p>Developed a comprehensive sales dashboard to monitor multi-channel performance and support data-driven decision making. Features include interactive visualizations, real-time data updates, and performance analysis.</p>
+                        <a href="https://yjpg4915x1t4.jp.larksuite.com/base/XPDcbNntQaHUPks7QgdjdBeFpSh?from=from_copylink" target="_blank" rel="noopener noreferrer" class="btn project-btn">
+                            <i class="fas fa-external-link-alt"></i> View Dashboard
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="Screenshot 2026-01-29 005430.png" alt="E-commerce Platform" class="project-img">
+                    <div class="project-content">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Designed and implemented an online store with an integrated inventory management system and financial tracking. Improved operational efficiency through automated reporting and data analysis.</p>
+                        <a href="https://toko-widhi.page.gd/index.php" target="_blank" rel="noopener noreferrer" class="btn project-btn">
+                            <i class="fas fa-external-link-alt"></i> View Platform
+                        </a>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Work Experience</h2>
+                <p>Career Journey and Professional Development</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                       <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
+                        <img src="logo ipg.jpg" style="width: 70px;border-radius: 10px;"></a>                           
+                        <span class="timeline-date">January 2023 - Present</span>                     
+                        <span class="timeline-company">PT Indonesia Premium Goods</span>
+                        <h3>Sales & Inventory Admin</h3>
+                        <ul>
+                            <li>Prepared and reconciled sales reports as a basis for business decision-making.</li>
+                            <li>Analyzed sales data to identify trends, forecasting, and promotional strategies.</li>
+                            <li>Managed sales databases, data integration between systems, and marketplace finances.</li>
+                            <li>Controlled inventory (merchandise, raw materials & auxiliary materials), including recording, stock monitoring, and stocktaking.</li>
+                            <li>Investigated stock discrepancies and prepared inventory reports for management.</li>
+                            <li>Coordinated with other internal teams such as finance, purchasing, and product team regarding data needs (for strategy and promotions).</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-logo-stats">                    
+                    <div class="timeline-logo">
+                        <a href="https://www.instagram.com/elvicto.id/" target="_blank">
+                        <img src="logo elvicto.jpg" alt="Elvicto"> </a>
+                    </div>
+                    <div class="timeline-logo">
+                        <a href="https://www.instagram.com/onix.id/" target="_blank">
+                        <img src="logo onix.jpg" alt="Onix"> </a>
+                    </div>   
+                    </div>                                     
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                       <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
+                        <img src="logo ipg.jpg" style="width: 70px;border-radius: 10px;"></a>                         
+                        <span class="timeline-date">March - April 2024</span>
+                        <span class="timeline-company">PT Indonesia Premium Goods</span>
+                        <h3>Accounting</h3>
+                        <ul>
+                            <li>Verified completeness of documents to be processed for payment.</li>
+                            <li>Processed payment requests from all divisions to finance.</li>
+                            <li>Recorded transaction journals (Payments, Receipts, Sales, Purchases, and Adjustments).</li>
+                            <li>Prepared financial reports (balance sheet & profit and loss).</li>
+                            <li>Filed transaction documents.</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-logo-stats">                    
+                    <div class="timeline-logo">
+                        <a href="https://shopee.co.id/maskova.id?entryPoint=ShopByPDP" target="_blank">
+                        <img src="logo maskova.jpg" alt="Maskova"> </a>
+                    </div>
+                    <div class="timeline-logo">
+                        <a href="https://shopee.co.id/faceandglow.beauty" target="_blank">
+                        <img src="logo face&glow.jpg" alt="Face&Glow"> </a>
+                    </div>   
+                    </div>                           
+                    </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                       <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
+                        <img src="logo ipg.jpg" style="width: 70px;border-radius: 10px;"></a>                         
+                        <span class="timeline-date">January 2022 - January 2023</span>
+                        <span class="timeline-company">PT Indonesia Premium Goods</span>
+                        <h3>Housekeeper / Office Boy</h3>
+                        <ul>
+                            <li>Supported daily operations by maintaining cleanliness and tidiness of office and warehouse areas.</li>
+                            <li>Implemented regular cleaning schedules in various work areas.</li>
+                            <li>Monitored and managed availability of cleaning supplies.</li>
+                            <li>Ensured implementation of cleanliness and occupational safety standards.</li>
+                            <li>Coordinated with facilities and administration teams for operational needs.</li>
+                        </ul>
+                    </div>
+                     <div class="timeline-logo-stats">                    
+                    <div class="timeline-logo">
+                        <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
+                        <img src="ilustrasi OB.png" > </a>
+                    </div>
+                    <div class="timeline-logo">
+                        <a href="" target="_blank">
+                        <img src="" > </a>
+                    </div>   
+                    </div>     
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                       <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
+                        <img src="logo psp ayam blenger.jpg" style="width: 70px;border-radius: 10px;"></a>                         
+                        <span class="timeline-date">November 2021 - January 2022</span>
+                        <span class="timeline-company">PSP Ayam Blenger</span>
+                        <h3>Kitchen Helper / Waitress</h3>
+                        <ul>
+                            <li>Supported restaurant operations in both kitchen area and customer service.</li>
+                            <li>Prepared food ingredients, assisted cooking processes, and maintained kitchen cleanliness according to hygiene standards.</li>
+                            <li>Served dine-in and take-away customers, accurately recorded orders, and served food efficiently.</li>
+                            <li>Handled customer inquiries and complaints politely.</li>
+                            <li>Maintained cleanliness and tidiness of work areas and managed operational supplies.</li>
+                        </ul>
+                    </div>
+                     <div class="timeline-logo-stats">                    
+                    <div class="timeline-logo">
+                        <a href="https://www.instagram.com/pspayamblenger/" target="_blank">
+                        <img src="sample 1 makanan psp.jpg" alt="PSP Ayam Blenger" > </a>
+                    </div>
+                    <div class="timeline-logo">
+                        <a href="https://www.instagram.com/pspayamblenger/" target="_blank">
+                        <img src="sample 2 makanan psp.jpg" alt="PSP Ayam Blenger"> </a>
+                    </div>   
+                    </div>     
+                </div> 
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                       <a href="https://autologistik.co.id/" target="_blank">
+                        <img src="logo auto logistik.jpg" style="width: 70px;border-radius: 10px;"></a>                         
+                        <span class="timeline-date">January 2020 - April 2020</span>
+                        <span class="timeline-company">PT Andalan Utama Transportasi Otomotif</span>
+                        <h3>Internship (Finance & Logistics Support)</h3>
+                        <ul>
+                            <li>Supported Finance and Logistics teams in daily operational activities.</li>
+                            <li>Assisted in preparation and management of financial reports.</li>
+                            <li>Updated and maintained accuracy of shipping/logistics data.</li>
+                            <li>Supported coordination between Finance and Logistics functions.</li>
+                            <li>Developed data analysis skills, attention to detail, and teamwork.</li>
+                        </ul>
+                    </div>
+                     <div class="timeline-logo-stats">                    
+                    <div class="timeline-logo">
+                        <a href="https://autologistik.co.id/" target="_blank">
+                        <img src="ilustrasi auto logistik.jpg" alt="PSP Ayam Blenger" > </a>
+                    </div>
+                    <div class="timeline-logo">
+                        <a href="https://autologistik.co.id/" target="_blank">
+                        <img src="ilustrasi 2 auto logistik.jpg" > </a>
+                    </div>   
+                    </div>     
+                </div>                                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+                <p>Contact me to discuss strategic opportunities and potential collaboration</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>Available for job opportunities, professional collaborations, and strategic discussions.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email Address</h4>
+                            <a href="mailto:widhi.dhana80@gmail.com">widhi.dhana80@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Phone Number</h4>
+                            <a href="https://wa.me/6285894078040" rel="noopener noreferrer">+62 858 9407 8040</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div>
+                            <h4>LinkedIn</h4>
+                            <a href="https://www.linkedin.com/in/widhi-dhana/" target="_blank" rel="noopener noreferrer">Widhi Dhana Yulistyo</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div>
+                            <h4>Instagram</h4>
+                            <a href="https://www.instagram.com/dhana.8/" target="_blank" rel="noopener noreferrer">dhana.8</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email address" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" placeholder="Message Subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" placeholder="Please write your message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Widhi Dhana Yulistyo</h3>
+                    <p>Finance & Sales Operations</p>
+                </div>                       
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/widhi-dhana/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/dhana.8/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:widhi.dhana80@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://wa.me/6285894078040" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="currentYear"></span> Widhi Dhana Yulistyo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        const mainHeader = document.getElementById('mainHeader');
+        const navLinks = document.querySelectorAll('nav a');
+        const backToTop = document.getElementById('backToTop');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden';
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                mainHeader.classList.add('scrolled');
+                backToTop.classList.add('visible');
+            } else {
+                mainHeader.classList.remove('scrolled');
+                backToTop.classList.remove('visible');
+            }
+            
+            // Active navigation link
+            const scrollPosition = window.scrollY + 100;
+            
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        navLinks.forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        document.body.style.overflow = 'auto';
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Back to top
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Create a success message element
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            // Simulate sending (in real app, use AJAX)
+            setTimeout(() => {
+                // Success notification
+                const successMessage = document.createElement('div');
+                successMessage.innerHTML = `
+                    <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 10px; margin-top: 20px; border: 1px solid #c3e6cb;">
+                        <i class="fas fa-check-circle"></i> Thank you ${name}! Your message has been sent successfully. I will respond to ${email} promptly.
+                    </div>
+                `;
+                contactForm.appendChild(successMessage);
+                
+                // Reset form
+                contactForm.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Remove success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.remove();
+                }, 5000);
+            }, 1500);
+        });
+        
+        // Timeline animation
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+        
+        timelineItems.forEach(item => {
+            timelineObserver.observe(item);
+        });
+        
+        // Add animation on scroll for other elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.tool-card, .project-card, .stat-box, .contact-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+        
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Initialize with header scroll
+        window.dispatchEvent(new Event('scroll'));
+
+function exportToPDF() {
+    // Hide PDF button during export process
+    const pdfBtn = document.getElementById('exportPDFBtn');
+    const originalBtnText = pdfBtn.innerHTML;
+    pdfBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
+    pdfBtn.disabled = true;
+    
+    // Create jsPDF instance
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4'
+    });
+    
+    // Set document properties
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const margin = 20;
+    const contentWidth = pageWidth - (margin * 2);
+    let yPos = margin;
+    
+    // Function to add new page if needed
+    function checkPageHeight(y, addHeight = 10) {
+        if (y >= pageHeight - margin) {
+            doc.addPage();
+            return margin;
+        }
+        return y;
+    }
+    
+    // Function to check if there's enough space for certain content
+    function hasSpaceFor(heightNeeded) {
+        return yPos + heightNeeded < pageHeight - 30; // 30 is space for footer
+    }
+    
+    // Function to add divider line
+    function addDivider() {
+        yPos = checkPageHeight(yPos, 5);
+        doc.setDrawColor(200, 200, 200);
+        doc.line(margin, yPos, pageWidth - margin, yPos);
+        yPos += 8;
+    }
+    
+    // Function to add spacing
+    function addSpacing(height = 5) {
+        yPos += height;
+        yPos = checkPageHeight(yPos, height);
+    }
+    
+    // Function to add heading with styling
+    function addHeading(text, size = 18, isSection = false) {
+        yPos = checkPageHeight(yPos, size + 5);
+        
+        doc.setFontSize(size);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(isSection ? 29 : 0, isSection ? 99 : 0, isSection ? 255 : 0);
+        doc.text(text, margin, yPos);
+        
+        if (isSection) {
+            // Decorative line under section title
+            doc.setDrawColor(255, 107, 53);
+            doc.setLineWidth(1.5);
+            doc.line(margin, yPos + 2, margin + 50, yPos + 2);
+            doc.setLineWidth(0.2);
+        }
+        
+        doc.setTextColor(0, 0, 0);
+        yPos += size / 2 + 5;
+        return yPos;
+    }
+    
+    // Function to add paragraph text
+    function addParagraph(text, options = {}) {
+        const fontSize = options.fontSize || 10;
+        const isBold = options.bold || false;
+        const indent = options.indent || 0;
+        const color = options.color || [0, 0, 0];
+        const maxWidth = contentWidth - indent;
+        const align = options.align || 'justify';
+        
+        yPos = checkPageHeight(yPos, fontSize + 2);
+        
+        doc.setFontSize(fontSize);
+        doc.setFont('helvetica', isBold ? 'bold' : 'normal');
+        doc.setTextColor(...color);
+        
+        const lines = doc.splitTextToSize(text, maxWidth);
+        
+        lines.forEach(line => {
+            yPos = checkPageHeight(yPos, fontSize + 2);
+            doc.text(line, margin + indent, yPos);
+            yPos += fontSize / 2 + 2;
+        });
+        
+        doc.setTextColor(0, 0, 0);
+        doc.setFont('helvetica', 'normal');
+        return yPos;
+    }
+    
+    // Function to add bullet point
+    function addBulletPoint(text, indent = 10) {
+        yPos = checkPageHeight(yPos, 10);
+        doc.setFontSize(10);
+        doc.text('•', margin, yPos);
+        doc.text(text, margin + 5, yPos, { maxWidth: contentWidth - 5 - indent });
+        
+        // Calculate how many lines are used
+        const lines = doc.splitTextToSize(text, contentWidth - 5 - indent);
+        yPos += (lines.length * 5) + 2;
+        return yPos;
+    }
+    
+    // Function to add footer to all pages
+    function addFooterToAllPages() {
+        const totalPages = doc.internal.getNumberOfPages();
+        
+        for (let i = 1; i <= totalPages; i++) {
+            doc.setPage(i);
+            
+            // Save current Y position
+            const currentY = yPos;
+            
+            // Move to footer position
+            const footerY = pageHeight - 20;
+            
+            // Footer line
+            doc.setDrawColor(29, 99, 255);
+            doc.setLineWidth(0.5);
+            doc.line(margin, footerY, pageWidth - margin, footerY);
+            
+            // Footer text
+            doc.setFontSize(9);
+            doc.setTextColor(100, 100, 100);
+            doc.text('CV - Widhi Dhana Yulistyo', margin, pageHeight - 15);
+            doc.text(`Page ${i} of ${totalPages}`, pageWidth - margin, pageHeight - 15, { align: 'right' });
+            doc.setFontSize(8);
+            doc.text('Last updated: ' + new Date().toLocaleDateString(), pageWidth / 2, pageHeight - 10, { align: 'center' });
+            
+            // Return to original position (for active page)
+            if (i === totalPages) {
+                yPos = currentY;
+            }
+        }
+    }
+    
+    // Main function to generate PDF content
+    async function generatePDFContent() {
+        try {
+            // === HEADER ===
+            doc.setFillColor(29, 99, 255);
+            doc.rect(0, 0, pageWidth, 40, 'F');
+            
+            // Name and title
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(22);
+            doc.setFont('helvetica', 'bold');
+            doc.text('WIDHI DHANA YULISTYO', pageWidth / 2, 18, { align: 'center' });
+            
+            doc.setFontSize(12);
+            doc.setFont('helvetica', 'normal');
+            doc.text('Finance & Sales Operations', pageWidth / 2, 25, { align: 'center' });
+            
+            // Reset yPos after header
+            yPos = 50;
+            
+            // === PROFESSIONAL SUMMARY ===
+            addHeading('About Me', 16, true);
+            
+            const heroDesc = document.querySelector('.hero p:not(.tagline)');
+            if (heroDesc) {
+                addParagraph(heroDesc.textContent || heroDesc.innerText, {
+                    fontSize: 11,
+                    indent: 0,
+                });
+            }
+            
+            addSpacing(8);
+            
+            // === KEY ACHIEVEMENTS ===
+            addHeading('Key Achievements', 16, true);
+            
+            const achievements = [
+                'Reduced monthly reporting errors by 15% through process optimization',
+                'Managed sales data from more than 4 e-commerce platforms simultaneously',
+                'Supervised and managed inventory across multiple warehouse locations',
+                'Contributed to improved data accuracy and reporting efficiency'
+            ];
+            
+            achievements.forEach(achievement => {
+                addBulletPoint(achievement);
+            });
+            
+            addSpacing(8);
+            
+            
+            // === PROFESSIONAL EXPERIENCE ===
+            addHeading('Work Experience', 16, true);
+            
+            const timelineItems = document.querySelectorAll('.timeline-content');
+            timelineItems.forEach((item, index) => {
+                const date = item.querySelector('.timeline-date');
+                const company = item.querySelector('.timeline-company');
+                const title = item.querySelector('h3');
+                const desc = item.querySelector('p');
+                const listItems = item.querySelectorAll('li');
+                
+                if (date && company && title) {
+                    // Check if there's enough space for next experience
+                    // Estimated height: 5 lines * 5mm = 25mm
+                    if (!hasSpaceFor(60)) {
+                        doc.addPage();
+                        yPos = margin;
+                    }
+                    
+                    // Date and company
+                    addParagraph(`${date.textContent} | ${company.textContent}`, {
+                        bold: true,
+                        fontSize: 11,
+                        color: [29, 99, 255]
+                    });
+                    
+                    // Position title
+                    addParagraph(title.textContent, {
+                        bold: true,
+                        fontSize: 12
+                    });
+                    
+                    // Description
+                    if (desc) {
+                        addParagraph(desc.textContent, {
+                            fontSize: 10,
+                            indent: 0
+                        });
+                    }
+                    
+                    // Bullet points
+                    listItems.forEach(li => {
+                        addBulletPoint(li.textContent, 10);
+                    });
+                    
+                    // Add spacing between experiences (except for last one)
+                    if (index < timelineItems.length - 1) {
+                        addSpacing(3);
+                        addDivider();
+                        addSpacing(3);
+                    }
+                }
+            });
+            
+            addSpacing(15);
+            // === TECHNICAL SKILLS ===
+            addHeading('Skills', 16, true);
+            
+            const skillCategories = [
+                {
+                    category: 'Software',
+                    skills: 'Microsoft Office (Advanced Excel), Google Workspace, Accurate Online'
+                },
+                {
+                    category: 'Data Analysis',
+                    skills: 'Sales data analysis, trend identification, performance reporting'
+                },
+                {
+                    category: 'Inventory Management',
+                    skills: 'Stock recording, inventory flow monitoring, multi-location management'
+                },
+            ];
+            
+            skillCategories.forEach(category => {
+                // Check if there's enough space for next category
+                if (!hasSpaceFor(5)) {
+                    doc.addPage();
+                    yPos = margin;
+                }
+                
+                addParagraph(category.category + ':', { bold: true, fontSize: 11 });
+                addParagraph(category.skills, { indent: 5, fontSize: 10 });
+                addSpacing(5);
+            });
+            
+            addSpacing(10);            
+            
+            // === EDUCATION ===
+            addHeading('Education', 16, true);
+            
+            addParagraph('Vocational High School', { bold: true, fontSize: 11 });
+            addParagraph('Accounting', { indent: 5, fontSize: 10 });
+            addSpacing(5);
+            
+            addParagraph('Bina Sarana Informatika University', { bold: true, fontSize: 11 });
+            addParagraph('Bachelor of Management (Currently Pursuing)', { indent: 5, fontSize: 10 });
+            
+            addSpacing(5);
+            
+            // === CONTACT INFO ===
+            addHeading('Contact Information', 16, true);
+            
+            // Email
+            addParagraph('Email: widhi.dhana80@gmail.com', { fontSize: 10 });
+            
+            // Phone
+            addParagraph('Phone: +62 858 9407 8040', { fontSize: 10 });
+            
+            // LinkedIn
+            addParagraph('LinkedIn: linkedin.com/in/widhi-dhana', { fontSize: 10 });
+            
+            // Instagram
+            addParagraph('Instagram: @dhana.8', { fontSize: 10 });
+            
+            // Add footer to all pages
+            addFooterToAllPages();
+            
+        } catch (error) {
+            console.error('Error generating PDF:', error);
+        }
+    }
+    
+    // Generate PDF content and save
+    generatePDFContent().then(() => {
+        // Save PDF
+        doc.save('Widhi_Dhana_CV.pdf');
+        
+        // Restore button to original state
+        pdfBtn.innerHTML = originalBtnText;
+        pdfBtn.disabled = false;
+        
+        // Show success notification
+        showNotification('PDF successfully generated!', 'success');
+    }).catch(error => {
+        console.error('PDF generation failed:', error);
+        
+        // Restore button to original state
+        pdfBtn.innerHTML = originalBtnText;
+        pdfBtn.disabled = false;
+        
+        // Show error notification
+        showNotification('Failed to generate PDF. Please try again.', 'error');
+    });
+    
+    // Helper function to display notification
+    function showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: ${type === 'success' ? '#4CAF50' : '#f44336'};
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            transform: translateX(120%);
+            animation: slideIn 0.3s forwards;
+        `;
+        
+        notification.innerHTML = `
+            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+            ${message}
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.style.animation = 'slideOut 0.3s forwards';
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 3000);
+        
+        // Add stylesheet for animations
+        if (!document.getElementById('notification-styles')) {
+            const style = document.createElement('style');
+            style.id = 'notification-styles';
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(120%); }
+                    to { transform: translateX(0); }
+                }
+                @keyframes slideOut {
+                    from { transform: translateX(0); }
+                    to { transform: translateX(120%); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+}
+    </script>
+</body>
+</html>
