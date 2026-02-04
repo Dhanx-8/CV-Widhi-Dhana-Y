@@ -2080,10 +2080,20 @@ function exportToPDF() {
             addSpacing(10);
 
             // === FOOTER ===
-            const totalPages = doc.internal.getNumberOfPages();
-            for (let i = 1; i <= totalPages; i++) {
-                doc.setPage(i);
+                // Fungsi untuk memeriksa apakah ada cukup ruang untuk konten
+                function checkSpaceForContent(requiredHeight) {
+                    return yPos + requiredHeight < doc.internal.pageSize.getHeight() - margin;
+                }
                 
+                // === FOOTER === 
+                const footerHeight = 25; // Tinggi total footer (termasuk garis dan teks)
+                const currentY = yPos; // Posisi Y saat ini
+                
+                // Jika tidak ada cukup ruang untuk footer, buat halaman baru
+                if (!checkSpaceForFooter(footerHeight)) {
+                    doc.addPage();
+                    yPos = margin;
+                }
                 // Footer line
                 doc.setDrawColor(29, 99, 255);
                 doc.setLineWidth(0.5);
@@ -2186,6 +2196,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 </body>
 </html>
+
 
 
 
