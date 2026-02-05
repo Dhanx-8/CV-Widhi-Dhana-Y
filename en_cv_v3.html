@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Widhi Dhana Yulistyo - Sales Operations & Financial Analysis Specialist</title>
-    <meta name="description" content="Professional portfolio of Widhi Dhana Yulistyo, a Sales Operations & Financial Analysis specialist with experience in inventory management and multi-channel financial reconciliation.">
+    <meta name="description" content="Professional portfolio of Widhi Dhana Yulistyo, Sales Operations & Financial Analysis specialist with experience in inventory management and multi-channel financial reconciliation.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
     <style>
@@ -356,22 +356,9 @@
             color: var(--primary);
             margin-left: 15px;
         }
-        .btn-pdf {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            margin-left: 0px;
-        }        
         
         .btn-outline::before {
             background: var(--gradient-primary);
-        }
-        .btn-pdf::before {
-            background: var(--gradient-primary);
-        }        
-        .btn-pdf:hover {
-            color: white;
-            border-color: transparent;
         }
         
         .btn-outline:hover {
@@ -669,7 +656,7 @@
         .timeline {
             position: relative;
             max-width: 1000px;
-            margin: 0;
+            margin: 0 auto;
             padding: 20px 0;
         }
         
@@ -680,60 +667,33 @@
             background: var(--gradient-primary);
             top: 0;
             bottom: 0;
-            left: 5%;
+            left: 50%;
             transform: translateX(-50%);
             border-radius: 5px;
         }
         
         .timeline-item {
             display: flex;
-            padding: 20px 70px;
+            padding: 20px 0;
             position: relative;
-            width: 180%;
+            width: 100%;
             box-sizing: border-box;
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
-            height:min-content;
-        }
-
-        .timeline-logo-stats{
-            flex: 1;
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 10px;
-            margin-left: 25px;
-        }
-
-        .timeline-logo img {
-            width: 200px; /* atur sesuai kebutuhan */
-            height: auto;
-            display: grid;
-            border-radius: 20%;
-            grid-template-columns: repeat(2, 1fr);    
-            transform: translateY(0px);
-            transition: opacity 0.6s ease, transform 0.6s ease;                               
-        }
-        .timeline-logo img {
-            transition: all 0.3s ease;
         }
         
-        .timeline-item:hover .timeline-logo img {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
         .timeline-item.visible {
             opacity: 1;
             transform: translateY(0);
         }
         
         .timeline-item:nth-child(odd) {
-            left: 0;
+            justify-content: flex-start;
         }
         
         .timeline-item:nth-child(even) {
-            left: 0%;
+            justify-content: flex-end;
         }
         
         .timeline-content {
@@ -743,7 +703,7 @@
             box-shadow: var(--shadow);
             position: relative;
             transition: var(--transition);
-            flex: 1;
+            width: calc(50% - 50px);
         }
         
         .timeline-content:hover {
@@ -751,24 +711,29 @@
             box-shadow: var(--shadow-hover);
         }
         
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+        }
         
-        .timeline-item:nth-child(even) .timeline-content::before {
-            left: -10px;
-            right: auto;
-            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
         }
         
         .timeline-dot {
-            position:relative;
-            left: -32px;            
-            width: 24px;
-            height: 24px;
+            position: absolute;
+            width: 20px;
+            height: 20px;
             background: var(--gradient-primary);
             border-radius: 50%;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
             border: 4px solid white;
             box-shadow: 0 0 0 4px rgba(29, 99, 255, 0.2);
+            z-index: 1;
         }
-        
         
         .timeline-date {
             font-weight: 700;
@@ -1012,7 +977,7 @@
             background: var(--gradient-secondary);
         }
         
-        /* Responsive Styles */
+        /* ========== MOBILE RESPONSIVE STYLES ========== */
         @media (max-width: 1200px) {
             .container {
                 max-width: 95%;
@@ -1036,36 +1001,13 @@
                 gap: 50px;
             }
             
-            .timeline::before {
-                left: 31px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 80px;
-                padding-right: 30px;
-            }
-            
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-            
-            .timeline-content::before {
-                left: 20px;
-                right: auto;
-            }
-            
-            .timeline-dot {
-                left: 19px !important;
-                right: auto !important;
-            }
-            
             .projects-grid {
                 grid-template-columns: 1fr;
             }
         }
         
         @media (max-width: 768px) {
+            /* Header Mobile */
             .header-container {
                 padding: 15px 0;
             }
@@ -1077,7 +1019,8 @@
                 left: 0;
                 width: 100%;
                 height: 100vh;
-                background: white;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
@@ -1089,6 +1032,11 @@
                 display: flex;
             }
             
+            nav a {
+                font-size: 1.3rem;
+                padding: 10px 0;
+            }
+            
             .language-switcher {
                 display: none;
             }
@@ -1097,49 +1045,39 @@
                 display: block;
             }
             
+            /* Hero Mobile */
             .hero {
                 padding: 140px 0 80px;
             }
             
             .hero h1 {
                 font-size: 2.5rem;
+                line-height: 1.2;
+                margin-bottom: 20px;
             }
             
-            .section-title h2 {
-                font-size: 2.2rem;
+            .tagline {
+                font-size: 1.1rem;
+                margin-bottom: 20px;
+                padding-left: 15px;
             }
             
-            .about-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline-logo {
-                grid-template-columns: 1fr;
-            }
-
-            .tools-grid {
-                grid-template-columns: 1fr;
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 25px;
+                text-align: justify;
             }
             
-            .footer-content {
+            .hero-buttons {
+                display: flex;
                 flex-direction: column;
-                gap: 30px;
-                text-align: center;
+                gap: 15px;
+                align-items: center;
             }
             
             .btn-outline {
                 margin-left: 0;
-                margin-top: 15px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
+                margin-top: 0;
             }
             
             .profile-img-container {
@@ -1147,17 +1085,354 @@
                 height: 280px;
             }
             
-            .about-text, .contact-info, .contact-form {
-                padding: 30px 20px;
+            /* Section Titles Mobile */
+            .section-title h2 {
+                font-size: 2.2rem;
             }
             
+            .section-title p {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+            
+            /* About Mobile */
+            .about-text {
+                padding: 30px 25px;
+                text-indent: 0;
+                text-align: left;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .stat-box {
+                padding: 25px 20px;
+            }
+            
+            .stat-box h3 {
+                font-size: 2.2rem;
+            }
+            
+            /* Skills Mobile */
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .tool-card {
+                padding: 30px 25px;
+            }
+            
+            .tool-icon {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 20px;
+            }
+            
+            .tool-icon i {
+                font-size: 2.5rem;
+            }
+            
+            /* Projects Mobile */
             .projects-grid {
                 grid-template-columns: 1fr;
+                gap: 25px;
             }
             
             .project-card {
-                max-width: 100%;
+                border-radius: 15px;
             }
+            
+            .project-img {
+                height: 200px;
+            }
+            
+            .project-content {
+                padding: 25px;
+            }
+            
+            .project-content h3 {
+                font-size: 1.3rem;
+            }
+            
+            /* Experience Timeline Mobile */
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                padding: 20px 0 20px 60px;
+                justify-content: flex-start !important;
+            }
+            
+            .timeline-content {
+                width: 100%;
+                margin: 0 !important;
+                padding: 25px;
+            }
+            
+            .timeline-content::before {
+                display: none;
+            }
+            
+            .timeline-dot {
+                left: 21px;
+                top: 25px;
+                transform: none;
+            }
+            
+            .timeline-company {
+                font-size: 1rem;
+            }
+            
+            .timeline-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .timeline-content ul {
+                padding-left: 15px;
+            }
+            
+            /* Contact Mobile */
+            .contact-info,
+            .contact-form {
+                padding: 30px 25px;
+                border-radius: 15px;
+            }
+            
+            .contact-item {
+                margin-bottom: 25px;
+                padding: 12px;
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+                width: 55px;
+                height: 55px;
+            }
+            
+            .form-group input,
+            .form-group textarea {
+                padding: 14px 18px;
+            }
+            
+            /* Footer Mobile */
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .social-links a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+            
+            .copyright {
+                font-size: 0.9rem;
+                padding-top: 25px;
+            }
+            
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            /* Extra Small Devices */
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .profile-img-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .about-text,
+            .contact-info,
+            .contact-form {
+                padding: 25px 20px;
+            }
+            
+            .stat-box {
+                padding: 20px 15px;
+            }
+            
+            .stat-box h3 {
+                font-size: 2rem;
+            }
+            
+            .tool-card {
+                padding: 25px 20px;
+            }
+            
+            .project-img {
+                height: 180px;
+            }
+            
+            .project-content {
+                padding: 20px;
+            }
+            
+            .timeline-item {
+                padding-left: 50px;
+            }
+            
+            .timeline-dot {
+                left: 18px;
+                width: 18px;
+                height: 18px;
+            }
+            
+            .timeline-content {
+                padding: 20px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.95rem;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            /* Very Small Devices */
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .profile-img-container {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .profile-img {
+                border-width: 8px;
+            }
+            
+            .stat-box h3 {
+                font-size: 1.8rem;
+            }
+            
+            .tool-icon {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .tool-icon i {
+                font-size: 2rem;
+            }
+            
+            .project-img {
+                height: 160px;
+            }
+            
+            .timeline-content ul li {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+            
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* Orientation-specific adjustments */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                padding: 120px 0 60px;
+            }
+            
+            .hero-content {
+                flex-direction: row;
+                gap: 30px;
+            }
+            
+            .hero-text {
+                text-align: left;
+            }
+            
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+            
+            .profile-img-container {
+                width: 200px;
+                height: 200px;
+            }
+            
+            nav {
+                gap: 20px;
+            }
+            
+            nav a {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Fix for iOS Safari */
+        @supports (-webkit-touch-callout: none) {
+            .hero {
+                padding-top: 120px;
+                min-height: 100vh;
+            }
+            
+            nav {
+                height: -webkit-fill-available;
+            }
+        }
+        
+        /* Fix for Android Chrome */
+        @media screen and (-webkit-min-device-pixel-ratio: 0) and (max-width: 768px) {
+            .hero {
+                min-height: calc(100vh - 60px);
+            }
+        }
+        
+        /* Prevent text size adjustment on mobile */
+        html {
+            -webkit-text-size-adjust: 100%;
         }
     </style>
 </head>
@@ -1182,10 +1457,10 @@
                 <a href="#experience">Experience</a>
                 <a href="#contact">Contact</a>
             </nav>
-                <div class="language-switcher">
-                    <button class="lang-btn active">EN</button>
-                    <a href="index.html" class="lang-btn">ID</a>
-                </div>            
+            <div class="language-switcher">
+                <button class="lang-btn active">EN</button>
+                <a href="index.html" class="lang-btn">ID</a>
+            </div>
         </div>
     </header>
 
@@ -1195,14 +1470,14 @@
             <div class="hero-text">
                 <h1>Widhi Dhana Yulistyo</h1>
                 <p class="tagline">Finance & Sales Operations</p>
-                <p>Vocational high school graduate with a background in Accounting and currently pursuing a Bachelor's degree in Management. Interested in finance and administration fields. Have 3 years of experience in the Finance division as an Admin, and proficient in using Microsoft Excel, Accurate software, and marketplace platforms. Skilled in data entry, processing and reporting, data analysis, and inventory tracking.</p>
+                <p>SMK graduate with background in Accounting and currently pursuing a Bachelor's degree in Management. Interested in finance and administration. Experienced for 3 years in the Finance division as an Administrator, and proficient in operating Microsoft Excel, Accurate software, and marketplace platforms. Possesses skills in data entry, processing and reporting, data analysis, and inventory tracking.</p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn">
                         <i class="fas fa-paper-plane"></i> Contact Me
                     </a>
                     <button onclick="exportToPDF()" class="btn btn-outline" id="exportPDFBtn">
-                        <i class="fas fa-file-pdf"></i> Download CV 
-                    </button>                     
+                        <i class="fas fa-file-pdf"></i> Download CV
+                    </button>
                 </div>
             </div>
             <div class="hero-image">
@@ -1224,7 +1499,7 @@
                 <div class="about-text">
                     <p>I am a detail-oriented professional with experience in finance and sales operations, inventory management, and financial reconciliation across various sales channels, including e-commerce and offline sales.</p>
                     <p>I am accustomed to supporting data analysis, reporting, and operational processes, as well as collaborating with various teams to improve workflow efficiency and data accuracy.</p>
-                    <p>I have experience using various analysis tools and operational software to support work processes and improve reporting quality, thereby helping to make better business decisions.</p>
+                    <p>I have experience using various analytical tools and operational software to support work processes and improve reporting quality, thereby assisting in more informed business decision-making.</p>
                 </div>
                 <div class="about-stats">
                     <div class="stat-box">
@@ -1293,7 +1568,7 @@
                         <i class="fas fa-warehouse"></i>
                     </div>
                     <h3>Inventory Management</h3>
-                    <p>Stock tracking across multiple locations, inventory flow monitoring, and inventory level control to improve operational efficiency.</p>
+                    <p>Stock tracking across multiple locations, monitoring inventory flow, and controlling stock levels to improve operational efficiency.</p>
                 </div>
                 <div class="tool-card">
                     <div class="tool-icon">
@@ -1311,14 +1586,14 @@
         <div class="container">
             <div class="section-title">
                 <h2>Projects</h2>
-                <p>Selection of projects reflecting experience in sales operations and data analysis</p>
+                <p>Selected projects reflecting experience in sales operations and data analysis</p>
             </div>
             <div class="projects-grid">
                 <div class="project-card">
                     <img src="Screenshot 2026-01-29 004912.png" alt="Sales Performance Dashboard" class="project-img">
                     <div class="project-content">
                         <h3>Sales Performance Dashboard</h3>
-                        <p>Developed a comprehensive sales dashboard to monitor multi-channel performance and support data-driven decision making. Features include interactive visualizations, real-time data updates, and performance analysis.</p>
+                        <p>Developed a comprehensive sales dashboard to monitor multi-channel performance and support data-driven decision-making. Features include interactive visualizations, real-time data updates, and performance analysis.</p>
                         <a href="https://yjpg4915x1t4.jp.larksuite.com/base/XPDcbNntQaHUPks7QgdjdBeFpSh?from=from_copylink" target="_blank" rel="noopener noreferrer" class="btn project-btn">
                             <i class="fas fa-external-link-alt"></i> View Dashboard
                         </a>
@@ -1328,13 +1603,13 @@
                 <div class="project-card">
                     <img src="Screenshot 2026-01-29 005430.png" alt="E-commerce Platform" class="project-img">
                     <div class="project-content">
-                        <h3>E-Commerce Platform</h3>
-                        <p>Designed and implemented an online store with an integrated inventory management system and financial tracking. Improved operational efficiency through automated reporting and data analysis.</p>
+                        <h3>E-commerce Platform</h3>
+                        <p>Designed and implemented an online store with integrated inventory management and financial tracking system. Improved operational efficiency through automated reporting and data analysis.</p>
                         <a href="https://toko-widhi.page.gd/index.php" target="_blank" rel="noopener noreferrer" class="btn project-btn">
                             <i class="fas fa-external-link-alt"></i> View Platform
                         </a>
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
     </section>
@@ -1350,117 +1625,97 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                       <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
-                        <img src="logo ipg.jpg" style="width: 70px;border-radius: 10px;"></a>                           
-                        <span class="timeline-date">January 2023 - Present</span>                     
+                        <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
+                            <img src="logo ipg.jpg" style="width: 70px;border-radius: 10px; margin-bottom: 15px;" alt="IPG Logo">
+                        </a>
+                        <span class="timeline-date">January 2023 - Present</span>
                         <span class="timeline-company">PT Indonesia Premium Goods</span>
                         <h3>Sales & Inventory Admin</h3>
                         <ul>
-                            <li>Prepared and reconciled sales reports as a basis for business decision-making.</li>
-                            <li>Analyzed sales data to identify trends, forecasting, and promotional strategies.</li>
-                            <li>Managed sales databases, data integration between systems, and marketplace finances.</li>
-                            <li>Controlled inventory (merchandise, raw materials & auxiliary materials), including recording, stock monitoring, and stocktaking.</li>
+                            <li>Compiled and reconciled sales reports as a basis for business decision-making.</li>
+                            <li>Analyzed sales data for trend identification, forecasting, and promotion strategies.</li>
+                            <li>Managed sales database, data integration across systems, and marketplace finance.</li>
+                            <li>Controlled inventory (merchandise, raw & auxiliary materials), including recording, stock monitoring, and stocktaking.</li>
                             <li>Investigated stock discrepancies and prepared inventory reports for management.</li>
                             <li>Coordinated with other internal teams such as finance, purchasing, and product team regarding data needs (for strategy and promotions).</li>
                         </ul>
-                    </div>
-                    <div class="timeline-logo-stats">                    
-                    <div class="timeline-logo">
-                        <a href="https://www.instagram.com/elvicto.id/" target="_blank">
-                        <img src="logo elvicto.jpg" alt="Elvicto"> </a>
-                    </div>
-                    <div class="timeline-logo">
+                        <h3>Brand</h3>
+                         <a href="https://www.instagram.com/elvicto.id/" target="_blank">
+                        <img src="logo elvicto.jpg" style="width: 70px;border-radius: 10px; margin-bottom: 15px;border-style:solid;border-color: #000000;" alt="Elvicto"> </a>
                         <a href="https://www.instagram.com/onix.id/" target="_blank">
-                        <img src="logo onix.jpg" alt="Onix"> </a>
-                    </div>   
-                    </div>                                     
+                        <img src="logo onix.jpg" style="width: 70px;border-radius: 10px; margin-bottom: 15px;border-style:solid;border-color: #000000;" alt="Onix"> </a>
+                    </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                       <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
-                        <img src="logo ipg.jpg" style="width: 70px;border-radius: 10px;"></a>                         
+                        <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
+                            <img src="logo ipg.jpg" style="width: 70px;border-radius: 10px; margin-bottom: 15px;" alt="IPG Logo">
+                        </a>
                         <span class="timeline-date">March - April 2024</span>
                         <span class="timeline-company">PT Indonesia Premium Goods</span>
                         <h3>Accounting</h3>
                         <ul>
                             <li>Verified completeness of documents to be processed for payment.</li>
                             <li>Processed payment requests from all divisions to finance.</li>
-                            <li>Recorded transaction journals (Payments, Receipts, Sales, Purchases, and Adjustments).</li>
-                            <li>Prepared financial reports (balance sheet & profit and loss).</li>
+                            <li>Input journal entries (Payments, Receipts, Sales, Purchases, and Adjustments).</li>
+                            <li>Created financial reports (balance sheet & profit and loss).</li>
                             <li>Filed transaction documents.</li>
                         </ul>
-                    </div>
-                    <div class="timeline-logo-stats">                    
-                    <div class="timeline-logo">
-                        <a href="https://shopee.co.id/maskova.id?entryPoint=ShopByPDP" target="_blank">
-                        <img src="logo maskova.jpg" alt="Maskova"> </a>
-                    </div>
-                    <div class="timeline-logo">
+                        <h3>Brand</h3>
+                         <a href="https://shopee.co.id/maskova.id?entryPoint=ShopByPDP" target="_blank">
+                        <img src="logo maskova.jpg" style="width: 70px;border-radius: 10px; margin-bottom: 15px;border-style:solid;border-color: #000000;" alt="Maskova"> </a>
                         <a href="https://shopee.co.id/faceandglow.beauty" target="_blank">
-                        <img src="logo face&glow.jpg" alt="Face&Glow"> </a>
-                    </div>   
-                    </div>                           
+                        <img src="logo face&glow.jpg" style="width: 70px;border-radius: 10px; margin-bottom: 15px;border-style:solid;border-color: #000000;" alt="Face&Glow"> </a>                        
                     </div>
+                </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                       <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
-                        <img src="logo ipg.jpg" style="width: 70px;border-radius: 10px;"></a>                         
+                        <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
+                            <img src="logo ipg.jpg" style="width: 70px;border-radius: 10px; margin-bottom: 15px;" alt="IPG Logo">
+                        </a>
                         <span class="timeline-date">January 2022 - January 2023</span>
                         <span class="timeline-company">PT Indonesia Premium Goods</span>
                         <h3>Housekeeper / Office Boy</h3>
                         <ul>
                             <li>Supported daily operations by maintaining cleanliness and tidiness of office and warehouse areas.</li>
-                            <li>Implemented regular cleaning schedules in various work areas.</li>
+                            <li>Executed routine cleaning schedules across various work areas.</li>
                             <li>Monitored and managed availability of cleaning supplies.</li>
-                            <li>Ensured implementation of cleanliness and occupational safety standards.</li>
-                            <li>Coordinated with facilities and administration teams for operational needs.</li>
+                            <li>Ensured implementation of cleanliness and workplace safety standards.</li>
+                            <li>Coordinated with facilities and administrative teams for operational needs.</li>
                         </ul>
                     </div>
-                     <div class="timeline-logo-stats">                    
-                    <div class="timeline-logo">
-                        <a href="https://www.linkedin.com/company/ipg-indonesia-premium-goods/posts/?feedView=all" target="_blank">
-                        <img src="ilustrasi OB.png" > </a>
-                    </div>
-                    <div class="timeline-logo">
-                        <a href="" target="_blank">
-                        <img src="" > </a>
-                    </div>   
-                    </div>     
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                       <a href="https://www.instagram.com/pspayamblenger/" target="_blank">
-                        <img src="logo psp ayam blenger.jpg" style="width: 70px;border-radius: 10px;"></a>                         
+                        <a href="https://www.instagram.com/pspayamblenger/" target="_blank">
+                            <img src="logo psp ayam blenger.jpg" style="width: 70px;border-radius: 10px; margin-bottom: 15px;" alt="PSP Ayam Blenger Logo">
+                        </a>
                         <span class="timeline-date">November 2021 - January 2022</span>
                         <span class="timeline-company">PSP Ayam Blenger</span>
                         <h3>Kitchen Helper / Waitress</h3>
                         <ul>
-                            <li>Supported restaurant operations in both kitchen area and customer service.</li>
-                            <li>Prepared food ingredients, assisted cooking processes, and maintained kitchen cleanliness according to hygiene standards.</li>
-                            <li>Served dine-in and take-away customers, accurately recorded orders, and served food efficiently.</li>
+                            <li>Supported restaurant operations in both kitchen and customer service areas.</li>
+                            <li>Prepared food ingredients, assisted in cooking processes, and maintained kitchen cleanliness according to hygiene standards.</li>
+                            <li>Served dine-in and take-away customers, recorded orders accurately, and served food efficiently.</li>
                             <li>Handled customer inquiries and complaints politely.</li>
                             <li>Maintained cleanliness and tidiness of work areas and managed operational supplies.</li>
                         </ul>
-                    </div>
-                     <div class="timeline-logo-stats">                    
-                    <div class="timeline-logo">
+                        <h3>Product</h3>
+                         <a href="https://www.instagram.com/pspayamblenger/" target="_blank">
+                        <img src="sample 1 makanan psp.jpg" style="width: 70px;border-radius: 10px; margin-bottom: 15px;" alt="Product"> </a>
                         <a href="https://www.instagram.com/pspayamblenger/" target="_blank">
-                        <img src="sample 1 makanan psp.jpg" alt="PSP Ayam Blenger" > </a>
+                        <img src="sample 2 makanan psp.jpg" style="width: 70px;border-radius: 10px; margin-bottom: 15px;" alt="Product"> </a>                          
                     </div>
-                    <div class="timeline-logo">
-                        <a href="https://www.instagram.com/pspayamblenger/" target="_blank">
-                        <img src="sample 2 makanan psp.jpg" alt="PSP Ayam Blenger"> </a>
-                    </div>   
-                    </div>     
-                </div> 
+                </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                       <a href="https://autologistik.co.id/" target="_blank">
-                        <img src="logo auto logistik.jpg" style="width: 70px;border-radius: 10px;"></a>                         
+                        <a href="https://autologistik.co.id/" target="_blank">
+                            <img src="logo auto logistik.jpg" style="width: 70px;border-radius: 10px; margin-bottom: 15px;" alt="Auto Logistik Logo">
+                        </a>
                         <span class="timeline-date">January 2020 - April 2020</span>
                         <span class="timeline-company">PT Andalan Utama Transportasi Otomotif</span>
                         <h3>Internship (Finance & Logistics Support)</h3>
@@ -1469,20 +1724,10 @@
                             <li>Assisted in preparation and management of financial reports.</li>
                             <li>Updated and maintained accuracy of shipping/logistics data.</li>
                             <li>Supported coordination between Finance and Logistics functions.</li>
-                            <li>Developed data analysis skills, attention to detail, and teamwork.</li>
+                            <li>Developed data analysis, attention to detail, and teamwork skills.</li>
                         </ul>
                     </div>
-                     <div class="timeline-logo-stats">                    
-                    <div class="timeline-logo">
-                        <a href="https://autologistik.co.id/" target="_blank">
-                        <img src="ilustrasi auto logistik.jpg" alt="PSP Ayam Blenger" > </a>
-                    </div>
-                    <div class="timeline-logo">
-                        <a href="https://autologistik.co.id/" target="_blank">
-                        <img src="ilustrasi 2 auto logistik.jpg" > </a>
-                    </div>   
-                    </div>     
-                </div>                                
+                </div>
             </div>
         </div>
     </section>
@@ -1492,7 +1737,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Contact Me</h2>
-                <p>Contact me to discuss strategic opportunities and potential collaboration</p>
+                <p>Contact me to discuss strategic opportunities and potential collaborations</p>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
@@ -1589,7 +1834,7 @@
                 <div class="footer-logo">
                     <h3>Widhi Dhana Yulistyo</h3>
                     <p>Finance & Sales Operations</p>
-                </div>                       
+                </div>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/widhi-dhana/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
                     <a href="https://www.instagram.com/dhana.8/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
@@ -1623,6 +1868,19 @@
                 icon.classList.add('fa-bars');
                 document.body.style.overflow = 'auto';
             }
+        });
+        
+        // Close mobile menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    document.body.style.overflow = 'auto';
+                }
+            });
         });
         
         // Header scroll effect
@@ -1769,15 +2027,15 @@
             observer.observe(el);
         });
         
-        
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
         
         // Initialize with header scroll
         window.dispatchEvent(new Event('scroll'));
-
-function exportToPDF() {
-    // Hide PDF button during export process
+        
+        // PDF export function (simplified version for mobile compatibility)
+        function exportToPDF() {
+    // Hide PDF button during export
     const pdfBtn = document.getElementById('exportPDFBtn');
     const originalBtnText = pdfBtn.innerHTML;
     pdfBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
@@ -1807,12 +2065,12 @@ function exportToPDF() {
         return y;
     }
     
-    // Function to check if there's enough space for certain content
+    // Function to check if there's enough space for specific content
     function hasSpaceFor(heightNeeded) {
         return yPos + heightNeeded < pageHeight - 30; // 30 is space for footer
     }
     
-    // Function to add divider line
+    // Function to add divider
     function addDivider() {
         yPos = checkPageHeight(yPos, 5);
         doc.setDrawColor(200, 200, 200);
@@ -1883,7 +2141,7 @@ function exportToPDF() {
         doc.text('•', margin, yPos);
         doc.text(text, margin + 5, yPos, { maxWidth: contentWidth - 5 - indent });
         
-        // Calculate how many lines are used
+        // Calculate how many lines were used
         const lines = doc.splitTextToSize(text, contentWidth - 5 - indent);
         yPos += (lines.length * 5) + 2;
         return yPos;
@@ -1984,7 +2242,7 @@ function exportToPDF() {
                 const listItems = item.querySelectorAll('li');
                 
                 if (date && company && title) {
-                    // Check if there's enough space for next experience
+                    // Check if there is enough space for the next experience
                     // Estimated height: 5 lines * 5mm = 25mm
                     if (!hasSpaceFor(60)) {
                         doc.addPage();
@@ -2017,7 +2275,7 @@ function exportToPDF() {
                         addBulletPoint(li.textContent, 10);
                     });
                     
-                    // Add spacing between experiences (except for last one)
+                    // Add spacing between experiences (except for the last one)
                     if (index < timelineItems.length - 1) {
                         addSpacing(3);
                         addDivider();
@@ -2046,7 +2304,7 @@ function exportToPDF() {
             ];
             
             skillCategories.forEach(category => {
-                // Check if there's enough space for next category
+                // Check if there is enough space for the next category
                 if (!hasSpaceFor(5)) {
                     doc.addPage();
                     yPos = margin;
@@ -2067,7 +2325,7 @@ function exportToPDF() {
             addSpacing(5);
             
             addParagraph('Bina Sarana Informatika University', { bold: true, fontSize: 11 });
-            addParagraph('Bachelor of Management (Currently Pursuing)', { indent: 5, fontSize: 10 });
+            addParagraph('S1 Management (Currently Pursuing)', { indent: 5, fontSize: 10 });
             
             addSpacing(5);
             
@@ -2116,7 +2374,7 @@ function exportToPDF() {
         showNotification('Failed to generate PDF. Please try again.', 'error');
     });
     
-    // Helper function to display notification
+    // Helper function to show notification
     function showNotification(message, type) {
         const notification = document.createElement('div');
         notification.style.cssText = `
