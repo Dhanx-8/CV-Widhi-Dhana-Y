@@ -1972,45 +1972,55 @@
         });
         
         // Form submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // Create a success message element
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitBtn.disabled = true;
-            
-            // Simulate sending (in real app, use AJAX)
-            setTimeout(() => {
-                // Success notification
-                const successMessage = document.createElement('div');
-                successMessage.innerHTML = `
-                    <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 10px; margin-top: 20px; border: 1px solid #c3e6cb;">
-                        <i class="fas fa-check-circle"></i> Thank you ${name}! Your message has been sent successfully. I will respond to ${email} promptly.
-                    </div>
-                `;
-                contactForm.appendChild(successMessage);
-                
-                // Reset form
-                contactForm.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                
-                // Remove success message after 5 seconds
-                setTimeout(() => {
-                    successMessage.remove();
-                }, 5000);
-            }, 1500);
-        });
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const subject = document.getElementById('subject').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
+
+    fetch("https://script.google.com/macros/s/AKfycbyq7py-FnaFMIeY3zrONVN6aTHAaBlFrbWv9C54u2Dnv7sTeIzP2MWONzkiXPxmNptR/exec", {
+        method: "POST",
+        body: JSON.stringify({
+            name,
+            email,
+            subject,
+            message
+        })
+    })
+    .then(() => {
+        const successMessage = document.createElement('div');
+        successMessage.innerHTML = `
+            <div style="background:#d4edda;color:#155724;padding:15px;border-radius:10px;margin-top:20px;">
+                <i class="fas fa-check-circle"></i>
+                Thanks ${name}, message sent successfully!
+            </div>
+        `;
+        contactForm.appendChild(successMessage);
+
+        contactForm.reset();
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+
+        setTimeout(() => successMessage.remove(), 5000);
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Failed to send message");
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    });
+});
+
         
         // Timeline animation
         const timelineItems = document.querySelectorAll('.timeline-item');
@@ -2452,5 +2462,6 @@
     </script>
 </body>
 </html>
+
 
 
